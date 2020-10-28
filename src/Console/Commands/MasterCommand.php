@@ -4,6 +4,13 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
+use function array_filter;
+use function file_exists;
+use function file_get_contents;
+use function file_put_contents;
+use function is_dir;
+use function ltrim;
+use function str_replace;
 use function trim;
 
 class MasterCommand extends GeneratorCommand
@@ -14,7 +21,8 @@ class MasterCommand extends GeneratorCommand
 
     protected $description = 'Create a master';
 
-    protected $rootNamespace = "";
+    protected $type = 'Master';
+
     protected $name = "";
     protected $fields = [];
 
@@ -26,12 +34,9 @@ class MasterCommand extends GeneratorCommand
         $this->processValidation();
         $this->getInput();
 
-        $this->comment($this->rootNamespace."\Santos");
-        return false;
-
         // process
-        $this->createRequest();
-//        $this->createService();
+//        $this->createRequest();
+        $this->createService();
 //        $this->createModel();
 //        $this->createMigration();
 //        $this->createFactory();
@@ -69,54 +74,76 @@ class MasterCommand extends GeneratorCommand
         foreach ($this->argument('fields') as $field) {
             $this->fields [] = trim($field);
         }
-
-        $this->rootNamespace = $this->getLaravel()->getNamespace();
     }
 
     private function createRequest()
     {
-        $this->info('Creating Request');
-        $namespace = $this->rootNamespace . "Request";
+        $this->call('laravel-foundation:store-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
 
-        $this->comment($namespace);
+        $this->call('laravel-foundation:update-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
 
-        $this->info('Request Done');
+        $this->call('laravel-foundation:edit-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:delete-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createService()
     {
-        $this->info('Creating Service');
-        $this->info('Service Done');
+        $this->call('laravel-foundation:service', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createModel()
     {
-        $this->info('Creating Model');
-        $this->info('Model Done');
+        $modelClass = $this->parseModel($this->option('model'));
+        $this->call('make:model', ['name' => $modelClass]);
     }
 
     private function createMigration()
     {
-        $this->info('Creating Migration');
-        $table = Str::snake(Str::pluralStudly(class_basename($this->name)));
+        $table = Str::snake(Str::pluralStudly(class_basename($this->argument('name'))));
 
-        $this->info('Migration Done');
+        if ($this->option('pivot')) {
+            $table = Str::singular($table);
+        }
+
+        $this->call('make:migration', [
+            'name' => "create_{$table}_table",
+            '--create' => $table,
+        ]);
     }
 
     private function createFactory()
     {
-        $this->info('Creating Factory');
-        $factory = Str::studly($this->name);
+        $factory = Str::studly($this->argument('name'));
 
-        $this->info('Factory Done');
+        $this->call('make:factory', [
+            'name' => "{$factory}Factory",
+            '--model' => $this->qualifyClass($this->getNameInput()),
+        ]);
     }
 
     private function createSeeder()
     {
-        $this->info('Creating Seeder');
-        $seeder = Str::studly(class_basename($this->name));
+        $seeder = Str::studly(class_basename($this->argument('name')));
 
-        $this->info('Seeder Done');
+        $this->call('make:seed', [
+            'name' => "{$seeder}Seeder",
+        ]);
     }
 
     private function createDatatable()
@@ -127,10 +154,15 @@ class MasterCommand extends GeneratorCommand
 
     private function createController()
     {
-        $this->info('Creating Controller');
-        $controller = Str::studly(class_basename($this->name));
+        $controller = Str::studly(class_basename($this->argument('name')));
 
-        $this->info('Controller Done');
+        $modelName = $this->qualifyClass($this->getNameInput());
+
+        $this->call('make:controller', array_filter([
+            'name'  => "{$controller}Controller",
+            '--model' => $this->option('resource') || $this->option('api') ? $modelName : null,
+            '--api' => $this->option('api'),
+        ]));
     }
 
     private function createView()

@@ -3,9 +3,8 @@
 namespace DummyNamespace;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class Store{{modelName}}Request extends FormRequest
+class Store{{StudlyCase}}Request extends FormRequest
 {
     public function authorize()
     {
@@ -15,15 +14,7 @@ class Store{{modelName}}Request extends FormRequest
     public function rules()
     {
         return [
-            'type' => ['required'],
-            'name' => ['required'],
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'permissions.*.exists' => __('One or more permissions were not found or are not allowed to be associated with this role type.'),
+            DummyRules
         ];
     }
 }

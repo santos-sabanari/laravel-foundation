@@ -6,8 +6,13 @@ include_once(__DIR__ . '/Utilities/helpers.php');
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\EditRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\InstallCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
 use SantosSabanari\LaravelFoundation\Http\Livewire\RolesDatatable;
 use SantosSabanari\LaravelFoundation\Http\Livewire\UsersDatatable;
 
@@ -44,6 +49,11 @@ class LaravelFoundationServiceProvider extends ServiceProvider
             $this->commands([
                 InstallCommand::class,
                 MasterCommand::class,
+                StoreRequestCommand::class,
+                UpdateRequestCommand::class,
+                EditRequestCommand::class,
+                DeleteRequestCommand::class,
+                ServiceCommand::class,
             ]);
         }
     }
