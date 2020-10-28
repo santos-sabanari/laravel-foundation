@@ -1,0 +1,57 @@
+{
+    "name": "santos-sabanari/laravel-foundation",
+    "description": "A minimalist admin panel using coreui",
+    "keywords": [
+        "santos-sabanari",
+        "laravel-foundation"
+    ],
+    "homepage": "https://github.com/santos-sabanari/laravel-foundation",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Santos Sabanari",
+            "email": "sabanari.santos@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "illuminate/support": "^8.0",
+        "livewire/livewire": "^2.3",
+        "tabuna/breadcrumbs": "^2.2",
+        "torann/geoip": "^3.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "SantosSabanari\\LaravelFoundation\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SantosSabanari\\LaravelFoundation\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SantosSabanari\\LaravelFoundation\\LaravelFoundationServiceProvider"
+            ],
+            "aliases": {
+                "LaravelFoundation": "SantosSabanari\\LaravelFoundation\\LaravelFoundationFacade"
+            }
+        }
+    }
+}

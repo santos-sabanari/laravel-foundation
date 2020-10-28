@@ -1,0 +1,18 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Models\Role;
+use Illuminate\Queue\SerializesModels;
+
+class {{modelName}}Updated
+{
+    use SerializesModels;
+
+    public $role;
+
+    public function __construct(Role $role)
+    {
+        $this->role = $role;
+    }
+}

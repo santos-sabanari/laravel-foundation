@@ -1,0 +1,68 @@
+<?php
+
+namespace DummyNamespace;
+
+use SantosSabanari\LaravelFoundation\Http\Requests\DeleteRoleRequest;
+use SantosSabanari\LaravelFoundation\Http\Requests\EditRoleRequest;
+use SantosSabanari\LaravelFoundation\Http\Requests\StoreRoleRequest;
+use SantosSabanari\LaravelFoundation\Http\Requests\UpdateRoleRequest;
+use App\Models\{{modelName}};
+use SantosSabanari\LaravelFoundation\Services\PermissionService;
+use SantosSabanari\LaravelFoundation\Services\RoleService;
+use App\Http\Controllers\Controller;
+
+
+class {{modelName}}Controller extends Controller
+{
+    protected $roleService;
+
+    protected $permissionService;
+
+    public function __construct({{modelName}}Service $roleService, PermissionService $permissionService)
+    {
+        $this->roleService = $roleService;
+        $this->permissionService = $permissionService;
+    }
+
+    public function index()
+    {
+        return view('laravel-foundation::system.role.index');
+    }
+
+    public function create()
+    {
+        return view('laravel-foundation::system.role.create')
+            ->withCategories($this->permissionService->getCategorizedPermissions())
+            ->withGeneral($this->permissionService->getUncategorizedPermissions());
+    }
+
+    public function store(StoreRoleRequest $request)
+    {
+        $this->roleService->store($request->validated());
+
+        return redirect()->route('backend.system.role.index')->withFlashSuccess(__('The role was successfully created.'));
+    }
+
+    public function edit(EditRoleRequest $request, Role $role)
+    {
+        return view('laravel-foundation::system.role.edit')
+            ->withCategories($this->permissionService->getCategorizedPermissions())
+            ->withGeneral($this->permissionService->getUncategorizedPermissions())
+            ->withRole($role)
+            ->withUsedPermissions($role->permissions->modelKeys());
+    }
+
+    public function update(UpdateRoleRequest $request, Role $role)
+    {
+        $this->roleService->update($role, $request->validated());
+
+        return redirect()->route('backend.system.role.index')->withFlashSuccess(__('The role was successfully updated.'));
+    }
+
+    public function destroy(DeleteRoleRequest $request, Role $role)
+    {
+        $this->roleService->destroy($role);
+
+        return redirect()->route('backend.system.role.index')->withFlashSuccess(__('The role was successfully deleted.'));
+    }
+}

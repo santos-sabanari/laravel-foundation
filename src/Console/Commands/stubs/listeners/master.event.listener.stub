@@ -1,0 +1,63 @@
+<?php
+
+namespace DummyNamespace;
+
+use SantosSabanari\LaravelFoundation\Events\RoleCreated;
+use SantosSabanari\LaravelFoundation\Events\RoleDeleted;
+use SantosSabanari\LaravelFoundation\Events\RoleUpdated;
+
+class {{modelName}}EventListener
+{
+    public function onCreated($event)
+    {
+        activity('role')
+            ->performedOn($event->role)
+            ->withProperties([
+                'role' => [
+                    'type' => $event->role->type,
+                    'name' => $event->role->name,
+                ],
+                'permissions' => $event->role->permissions->count() ? $event->role->permissions->pluck('description')->implode(', ') : 'None',
+            ])
+            ->log(':causer.name created role :subject.name with permissions: :properties.permissions');
+    }
+
+    public function onUpdated($event)
+    {
+        activity('role')
+            ->performedOn($event->role)
+            ->withProperties([
+                'role' => [
+                    'type' => $event->role->type,
+                    'name' => $event->role->name,
+                ],
+                'permissions' =>$event->role->permissions->count() ? $event->role->permissions->pluck('description')->implode(', ') : 'None',
+            ])
+            ->log(':causer.name updated role :subject.name with permissions: :properties.permissions');
+    }
+
+    public function onDeleted($event)
+    {
+        activity('role')
+            ->performedOn($event->role)
+            ->log(':causer.name deleted role :subject.name');
+    }
+
+    public function subscribe($events)
+    {
+        $events->listen(
+            RoleCreated::class,
+            'SantosSabanari\LaravelFoundation\Listeners\RoleEventListener@onCreated'
+        );
+
+        $events->listen(
+            RoleUpdated::class,
+            'SantosSabanari\LaravelFoundation\Listeners\RoleEventListener@onUpdated'
+        );
+
+        $events->listen(
+            RoleDeleted::class,
+            'SantosSabanari\LaravelFoundation\Listeners\RoleEventListener@onDeleted'
+        );
+    }
+}

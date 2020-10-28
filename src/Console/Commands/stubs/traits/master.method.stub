@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use Illuminate\Support\Collection;
+
+/**
+ * Trait RoleMethod.
+ */
+trait {{modelName}}Method
+{
+    //
+}

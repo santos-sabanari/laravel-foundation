@@ -1,0 +1,45 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Models\Role;
+use Illuminate\Database\Eloquent\Builder;
+use Livewire\Component;
+use Livewire\WithPagination;
+use SantosSabanari\LaravelDatatables\Views\Column;
+use SantosSabanari\LaravelDatatables\LaravelDatatables;
+
+class {{modelName}}Datatable extends LaravelDatatables
+{
+    public $sortField = 'name';
+
+    public function query(): Builder
+    {
+        return Role::with('permissions:id,name,description')
+            ->withCount('users');
+    }
+
+    public function columns(): array
+    {
+        return [
+            Column::make(__('Type'))
+                ->view('backend.auth.role.includes.type', 'role')
+                ->sortable(),
+            Column::make(__('Name'))
+                ->searchable()
+                ->sortable(),
+            Column::make(__('Permissions'), 'permissions_label')
+                ->customAttribute()
+                ->html()
+                ->searchable(function ($builder, $term) {
+                    return $builder->orWhereHas('permissions', function ($query) use ($term) {
+                        return $query->where('name', 'like', '%'.$term.'%');
+                    });
+                }),
+            Column::make(__('Number of Users'), 'users_count')
+                ->sortable(),
+            Column::make(__('Actions'))
+                ->view('laravel-foundation::system.role.includes.actions'),
+        ];
+    }
+}
