@@ -24,7 +24,7 @@ Route::group([
     Route::group(['prefix' => '{{{camelCase}}}'], function () {
         Route::get('edit', [{{StudlyCase}}Controller::class, 'edit'])
             ->name('edit')
-            ->breadcrumbs(function (Trail $trail, {{StudlyCase}} ${{camelCase}}) {
+            ->breadcrumbs(function (Trail $trail, ${{camelCase}}) {
                 $trail->parent('{{lowerCaseNamespace}}.{{camelCase}}.index')
                     ->push(__('Editing :{{camelCase}}', ['{{camelCase}}' => ${{camelCase}}->name]), route('{{lowerCaseNamespace}}.{{camelCase}}.edit', ${{camelCase}}));
             });
