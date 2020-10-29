@@ -180,8 +180,10 @@ class MasterCommand extends GeneratorCommand
 
     private function createDatatable()
     {
-        $this->info('Creating Datatable');
-        $this->info('Datatable Done');
+        $this->call('laravel-foundation:datatable', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createController()
