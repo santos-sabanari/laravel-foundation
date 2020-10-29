@@ -2,62 +2,58 @@
 
 namespace DummyNamespace;
 
-use SantosSabanari\LaravelFoundation\Events\RoleCreated;
-use SantosSabanari\LaravelFoundation\Events\RoleDeleted;
-use SantosSabanari\LaravelFoundation\Events\RoleUpdated;
+use App\Events\{{StudlyCase}}Created;
+use App\Events\{{StudlyCase}}Deleted;
+use App\Events\{{StudlyCase}}Updated;
 
-class {{modelName}}EventListener
+class {{StudlyCase}}EventListener
 {
     public function onCreated($event)
     {
-        activity('role')
-            ->performedOn($event->role)
+        activity('{{camelCase}}')
+            ->performedOn($event->{{camelCase}})
             ->withProperties([
-                'role' => [
-                    'type' => $event->role->type,
-                    'name' => $event->role->name,
+                '{{camelCase}}' => [
+                    DummyProperties
                 ],
-                'permissions' => $event->role->permissions->count() ? $event->role->permissions->pluck('description')->implode(', ') : 'None',
             ])
-            ->log(':causer.name created role :subject.name with permissions: :properties.permissions');
+            ->log(':causer.name created {{camelCase}} :subject.name with permissions: :properties.permissions');
     }
 
     public function onUpdated($event)
     {
-        activity('role')
-            ->performedOn($event->role)
+        activity('{{camelCase}}')
+            ->performedOn($event->{{camelCase}})
             ->withProperties([
-                'role' => [
-                    'type' => $event->role->type,
-                    'name' => $event->role->name,
+                '{{camelCase}}' => [
+                    DummyProperties
                 ],
-                'permissions' =>$event->role->permissions->count() ? $event->role->permissions->pluck('description')->implode(', ') : 'None',
             ])
-            ->log(':causer.name updated role :subject.name with permissions: :properties.permissions');
+            ->log(':causer.name updated {{camelCase}} :subject.name with permissions: :properties.permissions');
     }
 
     public function onDeleted($event)
     {
-        activity('role')
-            ->performedOn($event->role)
-            ->log(':causer.name deleted role :subject.name');
+        activity('{{camelCase}}')
+            ->performedOn($event->{{camelCase}})
+            ->log(':causer.name deleted {{camelCase}} :subject.name');
     }
 
     public function subscribe($events)
     {
         $events->listen(
-            RoleCreated::class,
-            'SantosSabanari\LaravelFoundation\Listeners\RoleEventListener@onCreated'
+            {{StudlyCase}}Created::class,
+            'App\Listeners\{{StudlyCase}}EventListener@onCreated'
         );
 
         $events->listen(
-            RoleUpdated::class,
-            'SantosSabanari\LaravelFoundation\Listeners\RoleEventListener@onUpdated'
+            {{StudlyCase}}Updated::class,
+            'App\Listeners\{{StudlyCase}}EventListener@onUpdated'
         );
 
         $events->listen(
-            RoleDeleted::class,
-            'SantosSabanari\LaravelFoundation\Listeners\RoleEventListener@onDeleted'
+            {{StudlyCase}}Deleted::class,
+            'App\Listeners\{{StudlyCase}}EventListener@onDeleted'
         );
     }
 }

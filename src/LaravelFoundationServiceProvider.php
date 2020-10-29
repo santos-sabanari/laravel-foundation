@@ -12,6 +12,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\EventCreatedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EventDeletedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EventUpdatedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\InstallCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ListenerCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
@@ -68,6 +69,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 TraitAttributeCommand::class,
                 TraitMethodCommand::class,
                 TraitScopeCommand::class,
+                ListenerCommand::class,
             ]);
         }
     }

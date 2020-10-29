@@ -31,9 +31,9 @@ class MasterCommand extends GeneratorCommand
 //        $this->createService();
 //        $this->createModel();
 //        $this->createEvent();
-        $this->createTrait();
+//        $this->createTrait();
 //        $this->createListener();
-//        $this->createMigration();
+        $this->createMigration();
 //        $this->createFactory();
 //        $this->createSeeder();
 //        $this->createDatatable();
