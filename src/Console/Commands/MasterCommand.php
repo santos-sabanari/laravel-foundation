@@ -38,8 +38,8 @@ class MasterCommand extends GeneratorCommand
 //        $this->createSeeder();
 //        $this->createDatatable();
 //        $this->createController();
-        $this->createView();
-//        $this->createRoute();
+//        $this->createView();
+        $this->createRoute();
 
         $this->info('All done!');
     }
@@ -229,8 +229,10 @@ class MasterCommand extends GeneratorCommand
 
     private function createRoute()
     {
-        $this->info('Creating Route');
-        $this->info('Route Done');
+        $this->call('laravel-foundation:route', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     protected function getStub()

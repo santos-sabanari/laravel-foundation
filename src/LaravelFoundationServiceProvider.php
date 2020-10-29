@@ -19,6 +19,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\ListenerCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MigrationCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\RouteCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\SeederCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
@@ -82,6 +83,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 DatatableCommand::class,
                 ControllerCommand::class,
                 ViewCommand::class,
+                RouteCommand::class,
             ]);
         }
     }
