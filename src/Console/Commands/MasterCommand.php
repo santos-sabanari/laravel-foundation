@@ -27,18 +27,18 @@ class MasterCommand extends GeneratorCommand
         $this->getInput();
 
         // process
-//        $this->createRequest();
-//        $this->createService();
-//        $this->createModel();
-//        $this->createEvent();
-//        $this->createTrait();
-//        $this->createListener();
-//        $this->createMigration();
-//        $this->createFactory();
-//        $this->createSeeder();
-//        $this->createDatatable();
-//        $this->createController();
-//        $this->createView();
+        $this->createRequest();
+        $this->createService();
+        $this->createModel();
+        $this->createEvent();
+        $this->createTrait();
+        $this->createListener();
+        $this->createMigration();
+        $this->createFactory();
+        $this->createSeeder();
+        $this->createDatatable();
+        $this->createController();
+        $this->createView();
         $this->createRoute();
 
         $this->info('All done!');

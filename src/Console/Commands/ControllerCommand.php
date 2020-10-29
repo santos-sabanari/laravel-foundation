@@ -46,6 +46,9 @@ class ControllerCommand extends GeneratorCommand
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
         $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
 
+        $studlyNamespace = Str::studly(config('laravel-foundation.namespace'));
+        $stub = str_replace('{{StudlyNamespace}}', $studlyNamespace, $stub);
+
         return $stub;
     }
 

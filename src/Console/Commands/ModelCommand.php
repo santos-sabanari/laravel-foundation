@@ -46,7 +46,7 @@ class ModelCommand extends GeneratorCommand
 
         $fillable = [];
         foreach ($this->argument('fields') as $field) {
-            $fillable []= "$field,";
+            $fillable []= "'$field',";
         }
 
         $text = implode("\n\t\t\t", $fillable);

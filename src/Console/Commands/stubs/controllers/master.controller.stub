@@ -2,10 +2,10 @@
 
 namespace DummyNamespace;
 
-use App\Http\Requests\Delete{{StudlyCase}}Request;
-use App\Http\Requests\Edit{{StudlyCase}}Request;
-use App\Http\Requests\Store{{StudlyCase}}Request;
-use App\Http\Requests\Update{{StudlyCase}}Request;
+use App\Http\Requests\{{StudlyNamespace}}\Delete{{StudlyCase}}Request;
+use App\Http\Requests\{{StudlyNamespace}}\Edit{{StudlyCase}}Request;
+use App\Http\Requests\{{StudlyNamespace}}\Store{{StudlyCase}}Request;
+use App\Http\Requests\{{StudlyNamespace}}\Update{{StudlyCase}}Request;
 use App\Models\{{StudlyCase}};
 use App\Services\{{StudlyCase}}Service;
 use App\Http\Controllers\Controller;

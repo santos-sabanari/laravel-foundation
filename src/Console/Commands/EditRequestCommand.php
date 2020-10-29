@@ -45,7 +45,7 @@ class EditRequestCommand extends GeneratorCommand
 
         $rules = [];
         foreach ($this->argument('fields') as $field) {
-            $rules [] = "'$field' => [required],";
+            $rules [] = "'$field' => ['required'],";
         }
 
         $text = implode("\n\t\t\t", $rules);

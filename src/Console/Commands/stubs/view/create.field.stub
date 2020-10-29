@@ -2,6 +2,6 @@
                         <label for="LowerCaseField" class="col-md-2 col-form-label">@lang('DummyField')</label>
 
                         <div class="col-md-10">
-                            <input type="text" name="DummyField" class="form-control" placeholder="{{ __('DummyField') }}" value="{{ old('LowerCaseField') }}" required />
+                            <input type="text" name="LowerCaseField" class="form-control" placeholder="{{ __('DummyField') }}" value="{{ old('LowerCaseField') }}" required />
                         </div>
                     </div>
