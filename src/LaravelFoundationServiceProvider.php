@@ -8,10 +8,17 @@ use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\EventCreatedCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\EventDeletedCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\EventUpdatedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\InstallCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\TraitAttributeCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\TraitMethodCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\TraitScopeCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
 use SantosSabanari\LaravelFoundation\Http\Livewire\RolesDatatable;
 use SantosSabanari\LaravelFoundation\Http\Livewire\UsersDatatable;
@@ -54,6 +61,13 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 EditRequestCommand::class,
                 DeleteRequestCommand::class,
                 ServiceCommand::class,
+                ModelCommand::class,
+                EventCreatedCommand::class,
+                EventUpdatedCommand::class,
+                EventDeletedCommand::class,
+                TraitAttributeCommand::class,
+                TraitMethodCommand::class,
+                TraitScopeCommand::class,
             ]);
         }
     }

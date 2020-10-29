@@ -9,15 +9,15 @@ use function ltrim;
 use function str_replace;
 use function trim;
 
-class StoreRequestCommand extends GeneratorCommand
+class ModelCommand extends GeneratorCommand
 {
-    protected $signature = 'laravel-foundation:store-request
-                            {name : The name of the store request}
-                            {fields* : The store request fields}';
+    protected $signature = 'laravel-foundation:model
+                            {name : The name of the model}
+                            {fields* : The model fields}';
 
-    protected $description = 'Create a store request';
+    protected $description = 'Create a model';
 
-    protected $type = 'Store Request';
+    protected $type = 'Model';
 
     protected function qualifyClass($name)
     {
@@ -31,7 +31,7 @@ class StoreRequestCommand extends GeneratorCommand
         }
 
         $LastNameBefore = Str::of($name)->afterLast('\\');
-        $lastNameAfter = Str::of($name)->afterLast('\\')->studly()->prepend("Store")->append("Request");
+        $lastNameAfter = Str::of($name)->afterLast('\\')->studly();
         $name = str_replace($LastNameBefore, $lastNameAfter, $name);
 
         return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name;
@@ -39,24 +39,25 @@ class StoreRequestCommand extends GeneratorCommand
 
     protected function replaceClass($stub, $name)
     {
-        $name = Str::studly($this->argument('name'));
-        $stub = str_replace('{{StudlyCase}}', $name, $stub);
+        $studly = Str::studly($this->argument('name'));
+        $stub = str_replace('{{StudlyCase}}', $studly, $stub);
 
-        $rules = "";
+
+        $fillable = "";
         foreach ($this->argument('fields') as $field) {
-            $rules .= "'$field' => [required],";
+            $fillable .= "$field,";
         }
 
-        return str_replace('DummyRules', $rules, $stub);
+        return str_replace('DummyFillable', $fillable, $stub);
     }
 
     protected function getStub()
     {
-        return __DIR__ . '/stubs/requests/store.request.stub';
+        return __DIR__ . '/stubs/database/model.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Http\Requests';
+        return $rootNamespace . '\Models';
     }
 }

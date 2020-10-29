@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-trait {{modelName}}Attribute
+trait {{StudlyCase}}Attribute
 {
     //
 }

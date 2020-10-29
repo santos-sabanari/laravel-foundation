@@ -4,14 +4,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
-use function array_filter;
-use function file_exists;
-use function file_get_contents;
-use function file_put_contents;
-use function is_dir;
-use function ltrim;
-use function str_replace;
-use function trim;
 
 class MasterCommand extends GeneratorCommand
 {
@@ -36,8 +28,11 @@ class MasterCommand extends GeneratorCommand
 
         // process
 //        $this->createRequest();
-        $this->createService();
+//        $this->createService();
 //        $this->createModel();
+//        $this->createEvent();
+        $this->createTrait();
+//        $this->createListener();
 //        $this->createMigration();
 //        $this->createFactory();
 //        $this->createSeeder();
@@ -109,8 +104,54 @@ class MasterCommand extends GeneratorCommand
 
     private function createModel()
     {
-        $modelClass = $this->parseModel($this->option('model'));
-        $this->call('make:model', ['name' => $modelClass]);
+        $this->call('laravel-foundation:model', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createEvent()
+    {
+        $this->call('laravel-foundation:event-created', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:event-updated', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:event-deleted', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createTrait()
+    {
+        $this->call('laravel-foundation:trait-attribute', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:trait-method', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:trait-scope', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createListener()
+    {
+        $this->call('laravel-foundation:listener', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createMigration()
@@ -159,7 +200,7 @@ class MasterCommand extends GeneratorCommand
         $modelName = $this->qualifyClass($this->getNameInput());
 
         $this->call('make:controller', array_filter([
-            'name'  => "{$controller}Controller",
+            'name' => "{$controller}Controller",
             '--model' => $this->option('resource') || $this->option('api') ? $modelName : null,
             '--api' => $this->option('api'),
         ]));
@@ -179,7 +220,7 @@ class MasterCommand extends GeneratorCommand
 
     protected function getStub()
     {
-        return __DIR__.'/stubs/value.stub';
+        return __DIR__ . '/stubs/value.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace)

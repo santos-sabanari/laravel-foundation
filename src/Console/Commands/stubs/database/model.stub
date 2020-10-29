@@ -1,22 +1,19 @@
 <?php
 
-namespace App\Models;
+namespace DummyNamespace;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use SantosSabanari\LaravelFoundation\Traits\RoleAttribute;
-use SantosSabanari\LaravelFoundation\Traits\RoleMethod;
-use Spatie\Permission\Models\Role as SpatieRole;
+use App\Traits\{{StudlyCase}}Attribute;
+use App\Traits\{{StudlyCase}}Method;
+use App\Traits\{{StudlyCase}}Scope;
 
-class Role extends SpatieRole
+class {{StudlyCase}} extends Model
 {
-    use RoleAttribute,
-        RoleMethod;
+    use {{StudlyCase}}Attribute,
+        {{StudlyCase}}Method;
 
-    /**
-     * @var string[]
-     */
-    protected $with = [
-        'permissions',
-    ];
+    protected $fillable = [
+            DummyFillable
+        ];
 }

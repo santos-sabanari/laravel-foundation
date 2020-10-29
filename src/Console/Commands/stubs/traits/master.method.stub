@@ -2,12 +2,7 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Support\Collection;
-
-/**
- * Trait RoleMethod.
- */
-trait {{modelName}}Method
+trait {{StudlyCase}}Method
 {
     //
 }
