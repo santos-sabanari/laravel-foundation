@@ -26,6 +26,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\TraitAttributeCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitMethodCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitScopeCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ViewCommand;
 use SantosSabanari\LaravelFoundation\Http\Livewire\RolesDatatable;
 use SantosSabanari\LaravelFoundation\Http\Livewire\UsersDatatable;
 
@@ -80,6 +81,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 SeederCommand::class,
                 DatatableCommand::class,
                 ControllerCommand::class,
+                ViewCommand::class,
             ]);
         }
     }

@@ -24,9 +24,9 @@ class MigrationCommand extends GeneratorCommand
 
     protected function getPath($name)
     {
-        $name = date("Y_m_d_His")."_".$name;
+        $name = date("Y_m_d_His") . "_" . $name;
 
-        return $this->laravel->databasePath().DIRECTORY_SEPARATOR.'migrations'.'/'.str_replace('\\', '/', $name).'.php';
+        return $this->laravel->databasePath() . DIRECTORY_SEPARATOR . 'migrations' . '/' . str_replace('\\', '/', $name) . '.php';
     }
 
     protected function qualifyClass($name)

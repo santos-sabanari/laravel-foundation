@@ -196,8 +196,35 @@ class MasterCommand extends GeneratorCommand
 
     private function createView()
     {
-        $this->info('Creating View');
-        $this->info('View Done');
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'create',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'index',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'edit',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'update',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'action',
+        ]);
     }
 
     private function createRoute()

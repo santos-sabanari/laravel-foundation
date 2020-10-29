@@ -58,7 +58,7 @@ class SeederCommand extends GeneratorCommand
 
         $fields = [];
         foreach ($this->argument('fields') as $field) {
-            $fields [] = "'$field'".' => $this->faker->name,';
+            $fields [] = "'$field'" . ' => $this->faker->name,';
         }
 
         $text = implode("\n\t\t\t", $fields);
@@ -72,6 +72,7 @@ class SeederCommand extends GeneratorCommand
         return __DIR__ . '/stubs/database/seeder.stub';
 
     }
+
     protected function getDefaultNamespace($rootNamespace)
     {
         return 'Database\Seeders';
