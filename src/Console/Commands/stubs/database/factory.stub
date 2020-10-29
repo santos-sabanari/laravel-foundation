@@ -1,6 +1,6 @@
 <?php
 
-namespace DummyFactoryNamespace;
+namespace Database\Factories;
 
 use App\Models\{{StudlyCase}};
 use Illuminate\Database\Eloquent\Factories\Factory;

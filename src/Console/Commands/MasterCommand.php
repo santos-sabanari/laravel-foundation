@@ -34,9 +34,9 @@ class MasterCommand extends GeneratorCommand
 //        $this->createTrait();
 //        $this->createListener();
 //        $this->createMigration();
-        $this->createFactory();
+//        $this->createFactory();
 //        $this->createSeeder();
-//        $this->createDatatable();
+        $this->createDatatable();
 //        $this->createController();
 //        $this->createView();
 //        $this->createRoute();
@@ -172,10 +172,9 @@ class MasterCommand extends GeneratorCommand
 
     private function createSeeder()
     {
-        $seeder = Str::studly(class_basename($this->argument('name')));
-
-        $this->call('make:seed', [
-            'name' => "{$seeder}Seeder",
+        $this->call('laravel-foundation:seeder', [
+            'name' => $this->name,
+            'fields' => $this->fields,
         ]);
     }
 

@@ -17,6 +17,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\ListenerCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MigrationCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\SeederCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitAttributeCommand;
@@ -74,6 +75,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 ListenerCommand::class,
                 MigrationCommand::class,
                 FactoryCommand::class,
+                SeederCommand::class,
             ]);
         }
     }

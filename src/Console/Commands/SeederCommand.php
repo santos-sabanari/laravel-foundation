@@ -12,21 +12,21 @@ use function str_replace;
 use function trim;
 use const DIRECTORY_SEPARATOR;
 
-class FactoryCommand extends GeneratorCommand
+class SeederCommand extends GeneratorCommand
 {
-    protected $signature = 'laravel-foundation:factory
-                            {name : The name of the factory}
-                            {fields* : The factory fields}';
+    protected $signature = 'laravel-foundation:seeder
+                            {name : The name of the seeder}
+                            {fields* : The seeder fields}';
 
-    protected $description = 'Create a factory';
+    protected $description = 'Create a seeder';
 
-    protected $type = 'Factory';
+    protected $type = 'Seeder';
 
     protected function getPath($name)
     {
         $name = Str::replaceFirst($this->rootNamespace(), '', $name);
 
-        return $this->laravel->databasePath() . DIRECTORY_SEPARATOR . 'factories' . '/' . str_replace('\\', '/', $name) . '.php';
+        return $this->laravel->databasePath() . DIRECTORY_SEPARATOR . 'seeders' . '/' . str_replace('\\', '/', $name) . '.php';
     }
 
     protected function qualifyClass($name)
@@ -41,7 +41,7 @@ class FactoryCommand extends GeneratorCommand
         }
 
         $LastNameBefore = Str::of($name)->afterLast('\\');
-        $lastNameAfter = Str::of($name)->afterLast('\\')->studly()->append("Factory");
+        $lastNameAfter = Str::of($name)->afterLast('\\')->studly()->append("Seeder");
         $name = str_replace($LastNameBefore, $lastNameAfter, $name);
 
         return $name;
@@ -54,6 +54,7 @@ class FactoryCommand extends GeneratorCommand
 
         $camel = Str::camel($this->argument('name'));
         $stub = str_replace('{{camelCase}}', $camel, $stub);
+        $stub = str_replace('DummySeederNamespace', 'Database\Factories', $stub);
 
         $fields = [];
         foreach ($this->argument('fields') as $field) {
@@ -68,11 +69,11 @@ class FactoryCommand extends GeneratorCommand
 
     protected function getStub()
     {
-        return __DIR__ . '/stubs/database/factory.stub';
-    }
+        return __DIR__ . '/stubs/database/seeder.stub';
 
+    }
     protected function getDefaultNamespace($rootNamespace)
     {
-        return 'Database\Factories';
+        return 'Database\Seeders';
     }
 }
