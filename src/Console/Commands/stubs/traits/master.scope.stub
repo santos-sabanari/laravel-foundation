@@ -2,7 +2,7 @@
 
 namespace DummyNamespace;
 
-trait {{modelName}}Scope
+trait {{StudlyCase}}Scope
 {
     //
 }

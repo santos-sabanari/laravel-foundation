@@ -2,17 +2,17 @@
 
 namespace DummyNamespace;
 
-use App\Models\Role;
+use App\Models\{{StudlyCase}};
 use Illuminate\Queue\SerializesModels;
 
-class {{modelName}}Created
+class {{StudlyCase}}Created
 {
     use SerializesModels;
 
-    public $role;
+    public ${{camelCase}};
 
-    public function __construct(Role $role)
+    public function __construct({{StudlyCase}} ${{camelCase}})
     {
-        $this->role = $role;
+        $this->{{camelCase}} = ${{camelCase}};
     }
 }

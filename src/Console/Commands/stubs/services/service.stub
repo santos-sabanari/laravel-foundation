@@ -2,74 +2,68 @@
 
 namespace DummyNamespace;
 
-use App\Models\{{modelName}};
+use App\Models\{{StudlyCase}};
 use App\Exceptions\GeneralException;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use SantosSabanari\LaravelFoundation\Services\BaseService;
-use SantosSabanari\LaravelFoundation\Events\RoleCreated;
-use SantosSabanari\LaravelFoundation\Events\RoleDeleted;
-use SantosSabanari\LaravelFoundation\Events\RoleUpdated;
+use App\Events\{{StudlyCase}}Created;
+use App\Events\{{StudlyCase}}Deleted;
+use App\Events\{{StudlyCase}}Updated;
 
-class {{modelName}}Service extends BaseService
+class {{StudlyCase}}Service extends BaseService
 {
-    public function __construct({{modelName}} $role)
+    public function __construct({{StudlyCase}} ${{camelCase}})
     {
-        $this->model = $role;
+        $this->model = ${{camelCase}};
     }
 
-    public function store(array $data = []): {{modelName}}
+    public function store(array $data = []): {{StudlyCase}}
     {
         DB::beginTransaction();
 
         try {
-            $role = $this->model::create(['type' => $data['type'], 'name' => $data['name']]);
-            $role->syncPermissions($data['permissions'] ?? []);
+            ${{camelCase}} = $this->model::create($data);
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem creating the role.'));
+            throw new GeneralException(__('There was a problem creating the {{camelCase}}.'));
         }
 
-        event(new {{modelName}}Created($role));
+        event(new {{StudlyCase}}Created(${{camelCase}}));
 
         DB::commit();
 
-        return $role;
+        return ${{camelCase}};
     }
 
-    public function update({{modelName}} $role, array $data = []): Role
+    public function update({{StudlyCase}} ${{camelCase}}, array $data = []): {{StudlyCase}}
     {
         DB::beginTransaction();
 
         try {
-            $role->update(['type' => $data['type'], 'name' => $data['name']]);
-            $role->syncPermissions($data['permissions'] ?? []);
+            ${{camelCase}}->update($data);
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem updating the role.'));
+            throw new GeneralException(__('There was a problem updating the {{camelCase}}.'));
         }
 
-        event(new {{modelName}}Updated($role));
+        event(new {{StudlyCase}}Updated(${{camelCase}}));
 
         DB::commit();
 
-        return $role;
+        return ${{camelCase}};
     }
 
-    public function destroy({{modelName}} $role): bool
+    public function destroy({{StudlyCase}} ${{camelCase}}): bool
     {
-        if ($role->users()->count()) {
-            throw new GeneralException(__('You can not delete a role with associated users.'));
-        }
-
-        if ($this->deleteById($role->id)) {
-            event(new {{modelName}}Deleted($role));
+        if ($this->deleteById(${{camelCase}}->id)) {
+            event(new {{StudlyCase}}Deleted(${{camelCase}}));
 
             return true;
         }
 
-        throw new GeneralException(__('There was a problem deleting the role.'));
+        throw new GeneralException(__('There was a problem deleting the {{camelCase}}.'));
     }
 }

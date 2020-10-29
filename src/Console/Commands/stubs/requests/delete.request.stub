@@ -2,25 +2,19 @@
 
 namespace DummyNamespace;
 
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Foundation\Http\FormRequest;
 
-class Delete{{modelName}}Request extends FormRequest
+class Delete{{StudlyCase}}Request extends FormRequest
 {
     public function authorize()
     {
-        return ! $this->role->isAdmin();
+        return true;
     }
 
     public function rules()
     {
         return [
-            //
+            DummyRules
         ];
-    }
-
-    protected function failedAuthorization()
-    {
-        throw new AuthorizationException(__('You can not delete the Administrator role.'));
     }
 }

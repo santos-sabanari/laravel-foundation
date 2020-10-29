@@ -4,7 +4,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
-use function trim;
 
 class MasterCommand extends GeneratorCommand
 {
@@ -14,7 +13,8 @@ class MasterCommand extends GeneratorCommand
 
     protected $description = 'Create a master';
 
-    protected $rootNamespace = "";
+    protected $type = 'Master';
+
     protected $name = "";
     protected $fields = [];
 
@@ -26,20 +26,20 @@ class MasterCommand extends GeneratorCommand
         $this->processValidation();
         $this->getInput();
 
-        $this->comment($this->rootNamespace."\Santos");
-        return false;
-
         // process
         $this->createRequest();
-//        $this->createService();
-//        $this->createModel();
-//        $this->createMigration();
-//        $this->createFactory();
-//        $this->createSeeder();
-//        $this->createDatatable();
-//        $this->createController();
-//        $this->createView();
-//        $this->createRoute();
+        $this->createService();
+        $this->createModel();
+        $this->createEvent();
+        $this->createTrait();
+        $this->createListener();
+        $this->createMigration();
+        $this->createFactory();
+        $this->createSeeder();
+        $this->createDatatable();
+        $this->createController();
+        $this->createView();
+        $this->createRoute();
 
         $this->info('All done!');
     }
@@ -69,89 +69,174 @@ class MasterCommand extends GeneratorCommand
         foreach ($this->argument('fields') as $field) {
             $this->fields [] = trim($field);
         }
-
-        $this->rootNamespace = $this->getLaravel()->getNamespace();
     }
 
     private function createRequest()
     {
-        $this->info('Creating Request');
-        $namespace = $this->rootNamespace . "Request";
+        $this->call('laravel-foundation:store-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
 
-        $this->comment($namespace);
+        $this->call('laravel-foundation:update-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
 
-        $this->info('Request Done');
+        $this->call('laravel-foundation:edit-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:delete-request', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createService()
     {
-        $this->info('Creating Service');
-        $this->info('Service Done');
+        $this->call('laravel-foundation:service', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createModel()
     {
-        $this->info('Creating Model');
-        $this->info('Model Done');
+        $this->call('laravel-foundation:model', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createEvent()
+    {
+        $this->call('laravel-foundation:event-created', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:event-updated', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:event-deleted', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createTrait()
+    {
+        $this->call('laravel-foundation:trait-attribute', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:trait-method', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+
+        $this->call('laravel-foundation:trait-scope', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createListener()
+    {
+        $this->call('laravel-foundation:listener', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createMigration()
     {
-        $this->info('Creating Migration');
-        $table = Str::snake(Str::pluralStudly(class_basename($this->name)));
-
-        $this->info('Migration Done');
+        $this->call('laravel-foundation:migration', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createFactory()
     {
-        $this->info('Creating Factory');
-        $factory = Str::studly($this->name);
-
-        $this->info('Factory Done');
+        $this->call('laravel-foundation:factory', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createSeeder()
     {
-        $this->info('Creating Seeder');
-        $seeder = Str::studly(class_basename($this->name));
-
-        $this->info('Seeder Done');
+        $this->call('laravel-foundation:seeder', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createDatatable()
     {
-        $this->info('Creating Datatable');
-        $this->info('Datatable Done');
+        $this->call('laravel-foundation:datatable', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createController()
     {
-        $this->info('Creating Controller');
-        $controller = Str::studly(class_basename($this->name));
-
-        $this->info('Controller Done');
+        $this->call('laravel-foundation:controller', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createView()
     {
-        $this->info('Creating View');
-        $this->info('View Done');
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'create',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'index',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'edit',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'update',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'action',
+        ]);
     }
 
     private function createRoute()
     {
-        $this->info('Creating Route');
-        $this->info('Route Done');
+        $this->call('laravel-foundation:route', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     protected function getStub()
     {
-        return __DIR__.'/stubs/value.stub';
-    }
-
-    protected function getDefaultNamespace($rootNamespace)
-    {
-        return $rootNamespace . '\Nebula\Metrics';
+        return __DIR__ . '/stubs/value.stub';
     }
 }

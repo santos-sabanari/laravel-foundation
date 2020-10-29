@@ -1,17 +1,16 @@
-<x-laravel-foundation::layouts.app :title="'Role Management'">
+<x-laravel-foundation::layouts.app :title="'{{StudlyCase}}'">
     <x-laravel-foundation::utils.card>
         <x-slot name="header">
             <x-laravel-foundation::utils.link
                 icon="fas fa-plus-circle"
                 class="btn btn-primary"
-                :href="route('backend.system.role.create')"
-                :text="__('Create Role')"
+                :href="route('{{lowerCaseNamespace}}.{{camelCase}}.create')"
+                :text="__('Create {{StudlyCase}}')"
             />
         </x-slot>
 
         <x-slot name="body">
-{{--            <livewire:users-table />--}}
-            <livewire:roles-datatable />
+            <livewire:{{camelCase}}s-datatable />
 
         </x-slot>
     </x-laravel-foundation::utils.card>
