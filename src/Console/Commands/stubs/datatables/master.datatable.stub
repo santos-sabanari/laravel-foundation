@@ -21,7 +21,6 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
     public function columns(): array
     {
         return [
-            Column::make(__('Name'))->searchable()->sortable(),
             DummyColumns
             Column::make(__('Actions'))
                 ->view('backend.{{camelCase}}.includes.action'),
