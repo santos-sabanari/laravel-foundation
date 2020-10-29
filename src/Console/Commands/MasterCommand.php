@@ -33,8 +33,8 @@ class MasterCommand extends GeneratorCommand
 //        $this->createEvent();
 //        $this->createTrait();
 //        $this->createListener();
-        $this->createMigration();
-//        $this->createFactory();
+//        $this->createMigration();
+        $this->createFactory();
 //        $this->createSeeder();
 //        $this->createDatatable();
 //        $this->createController();
@@ -164,11 +164,9 @@ class MasterCommand extends GeneratorCommand
 
     private function createFactory()
     {
-        $factory = Str::studly($this->argument('name'));
-
-        $this->call('make:factory', [
-            'name' => "{$factory}Factory",
-            '--model' => $this->qualifyClass($this->getNameInput()),
+        $this->call('laravel-foundation:factory', [
+            'name' => $this->name,
+            'fields' => $this->fields,
         ]);
     }
 

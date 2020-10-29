@@ -1,19 +1,18 @@
 <?php
 
-namespace Database\Factories;
+namespace DummyFactoryNamespace;
 
-use App\Models\Model;
-use App\Models\User;
+use App\Models\{{StudlyCase}};
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class ModelFactory extends Factory
+class {{StudlyCase}}Factory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Model::class;
+    protected $model = {{StudlyCase}}::class;
 
     /**
      * Define the model's default state.
@@ -23,8 +22,7 @@ class ModelFactory extends Factory
     public function definition()
     {
         return [
-            'type' => $this->faker->randomElement([User::TYPE_ADMIN, User::TYPE_USER]),
-            'name' => $this->faker->word,
+            DummyDefinitions
         ];
     }
 }
