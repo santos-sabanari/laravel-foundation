@@ -2,67 +2,57 @@
 
 namespace DummyNamespace;
 
-use SantosSabanari\LaravelFoundation\Http\Requests\DeleteRoleRequest;
-use SantosSabanari\LaravelFoundation\Http\Requests\EditRoleRequest;
-use SantosSabanari\LaravelFoundation\Http\Requests\StoreRoleRequest;
-use SantosSabanari\LaravelFoundation\Http\Requests\UpdateRoleRequest;
-use App\Models\{{modelName}};
-use SantosSabanari\LaravelFoundation\Services\PermissionService;
-use SantosSabanari\LaravelFoundation\Services\RoleService;
+use App\Http\Requests\Delete{{StudlyCase}}Request;
+use App\Http\Requests\Edit{{StudlyCase}}Request;
+use App\Http\Requests\Store{{StudlyCase}}Request;
+use App\Http\Requests\Update{{StudlyCase}}Request;
+use App\Models\{{StudlyCase}};
+use App\Services\{{StudlyCase}}Service;
 use App\Http\Controllers\Controller;
 
 
-class {{modelName}}Controller extends Controller
+class {{StudlyCase}}Controller extends Controller
 {
-    protected $roleService;
+    protected ${{camelCase}}Service;
 
-    protected $permissionService;
-
-    public function __construct({{modelName}}Service $roleService, PermissionService $permissionService)
+    public function __construct({{StudlyCase}}Service ${{camelCase}}Service)
     {
-        $this->roleService = $roleService;
-        $this->permissionService = $permissionService;
+        $this->{{camelCase}}Service = ${{camelCase}}Service;
     }
 
     public function index()
     {
-        return view('laravel-foundation::system.role.index');
+        return view('{{lowerCaseNamespace}}.{{camelCase}}.index');
     }
 
     public function create()
     {
-        return view('laravel-foundation::system.role.create')
-            ->withCategories($this->permissionService->getCategorizedPermissions())
-            ->withGeneral($this->permissionService->getUncategorizedPermissions());
+        return view('{{lowerCaseNamespace}}.{{camelCase}}.create');
     }
 
-    public function store(StoreRoleRequest $request)
+    public function store(Store{{StudlyCase}}Request $request)
     {
-        $this->roleService->store($request->validated());
+        $this->{{camelCase}}Service->store($request->validated());
 
-        return redirect()->route('backend.system.role.index')->withFlashSuccess(__('The role was successfully created.'));
+        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index')->withFlashSuccess(__('The {{camelCase}} was successfully created.'));
     }
 
-    public function edit(EditRoleRequest $request, Role $role)
+    public function edit(Edit{{StudlyCase}}Request $request, {{StudlyCase}} ${{camelCase}})
     {
-        return view('laravel-foundation::system.role.edit')
-            ->withCategories($this->permissionService->getCategorizedPermissions())
-            ->withGeneral($this->permissionService->getUncategorizedPermissions())
-            ->withRole($role)
-            ->withUsedPermissions($role->permissions->modelKeys());
+        return view('{{lowerCaseNamespace}}.{{camelCase}}.edit')->with{{StudlyCase}}(${{camelCase}});
     }
 
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(Update{{StudlyCase}}Request $request, {{StudlyCase}} ${{camelCase}})
     {
-        $this->roleService->update($role, $request->validated());
+        $this->{{camelCase}}Service->update(${{camelCase}}, $request->validated());
 
-        return redirect()->route('backend.system.role.index')->withFlashSuccess(__('The role was successfully updated.'));
+        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index')->withFlashSuccess(__('The {{camelCase}} was successfully updated.'));
     }
 
-    public function destroy(DeleteRoleRequest $request, Role $role)
+    public function destroy(Delete{{StudlyCase}}Request $request, {{StudlyCase}} ${{camelCase}})
     {
-        $this->roleService->destroy($role);
+        $this->{{camelCase}}Service->destroy(${{camelCase}});
 
-        return redirect()->route('backend.system.role.index')->withFlashSuccess(__('The role was successfully deleted.'));
+        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index')->withFlashSuccess(__('The {{camelCase}} was successfully deleted.'));
     }
 }

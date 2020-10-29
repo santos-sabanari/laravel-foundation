@@ -36,9 +36,9 @@ class MasterCommand extends GeneratorCommand
 //        $this->createMigration();
 //        $this->createFactory();
 //        $this->createSeeder();
-        $this->createDatatable();
+//        $this->createDatatable();
 //        $this->createController();
-//        $this->createView();
+        $this->createView();
 //        $this->createRoute();
 
         $this->info('All done!');
@@ -188,15 +188,10 @@ class MasterCommand extends GeneratorCommand
 
     private function createController()
     {
-        $controller = Str::studly(class_basename($this->argument('name')));
-
-        $modelName = $this->qualifyClass($this->getNameInput());
-
-        $this->call('make:controller', array_filter([
-            'name' => "{$controller}Controller",
-            '--model' => $this->option('resource') || $this->option('api') ? $modelName : null,
-            '--api' => $this->option('api'),
-        ]));
+        $this->call('laravel-foundation:controller', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
     }
 
     private function createView()

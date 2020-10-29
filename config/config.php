@@ -56,7 +56,7 @@ return [
     | Namespace
     |--------------------------------------------------------------------------
     |
-    | Used at the top of the sidebar when Sidebar Minimized
+    | Namespace for
     |
     */
     'namespace' => env('FOUNDATION_NAMESPACE', 'Backend'),

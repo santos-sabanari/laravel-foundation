@@ -6,6 +6,7 @@ include_once(__DIR__ . '/Utilities/helpers.php');
 
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
+use SantosSabanari\LaravelFoundation\Console\Commands\ControllerCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DatatableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditRequestCommand;
@@ -78,6 +79,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 FactoryCommand::class,
                 SeederCommand::class,
                 DatatableCommand::class,
+                ControllerCommand::class,
             ]);
         }
     }
