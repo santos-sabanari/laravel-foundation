@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function implode;
 use function ltrim;
 use function str_replace;
 use function trim;
@@ -42,12 +43,14 @@ class EditRequestCommand extends GeneratorCommand
         $name = Str::studly($this->argument('name'));
         $stub = str_replace('{{StudlyCase}}', $name, $stub);
 
-        $rules = "";
+        $rules = [];
         foreach ($this->argument('fields') as $field) {
-            $rules .= "'$field' => [required],";
+            $rules [] = "'$field' => [required],";
         }
 
-        return str_replace('DummyRules', $rules, $stub);
+        $text = implode("\n\t\t\t", $rules);
+
+        return str_replace('DummyRules', $text, $stub);
 
     }
 

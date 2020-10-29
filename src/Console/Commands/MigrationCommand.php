@@ -5,20 +5,29 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function date;
 use function implode;
 use function ltrim;
 use function str_replace;
 use function trim;
+use const DIRECTORY_SEPARATOR;
 
-class ListenerCommand extends GeneratorCommand
+class MigrationCommand extends GeneratorCommand
 {
-    protected $signature = 'laravel-foundation:listener
-                            {name : The name of the listener}
-                            {fields* : The listener fields}';
+    protected $signature = 'laravel-foundation:migration
+                            {name : The name of the migration}
+                            {fields* : The migration fields}';
 
-    protected $description = 'Create a listener';
+    protected $description = 'Create a migration';
 
-    protected $type = 'Listener';
+    protected $type = 'Migration';
+
+    protected function getPath($name)
+    {
+        $name = date("Y_m_d_His")."_".$name;
+
+        return $this->laravel->databasePath().DIRECTORY_SEPARATOR.'migrations'.'/'.str_replace('\\', '/', $name).'.php';
+    }
 
     protected function qualifyClass($name)
     {
@@ -32,10 +41,10 @@ class ListenerCommand extends GeneratorCommand
         }
 
         $LastNameBefore = Str::of($name)->afterLast('\\');
-        $lastNameAfter = Str::of($name)->afterLast('\\')->studly()->append("EventListener");
+        $lastNameAfter = Str::of($name)->afterLast('\\')->lower()->prepend("create_")->append("_table");
         $name = str_replace($LastNameBefore, $lastNameAfter, $name);
 
-        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name;
+        return $name;
     }
 
     protected function replaceClass($stub, $name)
@@ -46,24 +55,24 @@ class ListenerCommand extends GeneratorCommand
         $camel = Str::camel($this->argument('name'));
         $stub = str_replace('{{camelCase}}', $camel, $stub);
 
-        $properties = [];
+        $fields = [];
         foreach ($this->argument('fields') as $field) {
-            $properties[] = "'$field' => ".'$event'."->$camel->$field,";
+            $fields [] = '$table->string('."'$field');";
         }
 
-        $text = implode("\n\t\t\t\t\t", $properties);
+        $text = implode("\n\t\t\t", $fields);
 
-        return str_replace('DummyProperties', $text, $stub);
+        return str_replace('DummyFields', $text, $stub);
 
     }
 
     protected function getStub()
     {
-        return __DIR__ . '/stubs/listeners/master.event.listener.stub';
+        return __DIR__ . '/stubs/database/migration.stub';
     }
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Listeners';
+        return '';
     }
 }

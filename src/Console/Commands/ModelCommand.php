@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function implode;
 use function ltrim;
 use function str_replace;
 use function trim;
@@ -43,12 +44,14 @@ class ModelCommand extends GeneratorCommand
         $stub = str_replace('{{StudlyCase}}', $studly, $stub);
 
 
-        $fillable = "";
+        $fillable = [];
         foreach ($this->argument('fields') as $field) {
-            $fillable .= "$field,";
+            $fillable []= "$field,";
         }
 
-        return str_replace('DummyFillable', $fillable, $stub);
+        $text = implode("\n\t\t\t", $fillable);
+
+        return str_replace('DummyFillable', $text, $stub);
     }
 
     protected function getStub()

@@ -14,6 +14,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\EventUpdatedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\InstallCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ListenerCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\MigrationCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
@@ -70,6 +71,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 TraitMethodCommand::class,
                 TraitScopeCommand::class,
                 ListenerCommand::class,
+                MigrationCommand::class,
             ]);
         }
     }
