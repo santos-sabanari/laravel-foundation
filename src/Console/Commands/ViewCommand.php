@@ -62,6 +62,8 @@ class ViewCommand extends GeneratorCommand
             } elseif ($this->option('type') == 'edit') {
                 $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/edit.field.stub'));
                 $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
+                $fieldRow = str_replace('{{camelCase}}', $camel, $fieldRow);
+
                 $fieldRows[] = $fieldRow;
             }
         }

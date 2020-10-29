@@ -49,7 +49,7 @@ class DatatableCommand extends GeneratorCommand
 
         }
 
-        $text = implode("\n\t\t\t\t\t", $columns);
+        $text = implode("\n\t\t\t", $columns);
 
         return str_replace('DummyColumns', $text, $stub);
 

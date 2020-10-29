@@ -43,15 +43,7 @@ class EditRequestCommand extends GeneratorCommand
         $name = Str::studly($this->argument('name'));
         $stub = str_replace('{{StudlyCase}}', $name, $stub);
 
-        $rules = [];
-        foreach ($this->argument('fields') as $field) {
-            $rules [] = "'$field' => ['required'],";
-        }
-
-        $text = implode("\n\t\t\t", $rules);
-
-        return str_replace('DummyRules', $text, $stub);
-
+        return $stub;
     }
 
     protected function getStub()
