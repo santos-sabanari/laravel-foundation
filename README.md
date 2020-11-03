@@ -15,8 +15,6 @@ First, you have to install laravel fortify
 composer require laravel/fortify
 
 php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
-
-php artisan migrate
 ``` 
 
 Install the package via composer:
@@ -72,10 +70,12 @@ Add this code to $routeMiddleware in Http/Kernel.php
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
 ```
 
-Finaly, publish package files
+Finaly, publish package files and migrate the database
 
 ```bash
 php artisan laravel-foundation:install
+
+php artisan migrate
 ```
 
 ### Usage
