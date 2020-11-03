@@ -30,6 +30,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ViewCommand;
 use SantosSabanari\LaravelFoundation\Http\Livewire\RolesDatatable;
 use SantosSabanari\LaravelFoundation\Http\Livewire\UsersDatatable;
+use function app_path;
 use function database_path;
 
 class LaravelFoundationServiceProvider extends ServiceProvider
@@ -61,6 +62,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 __DIR__.'/../database/migrations' => database_path('migrations'),
                 __DIR__.'/../database/factories' => database_path('factories'),
                 __DIR__.'/../database/seeders' => database_path('seeders'),
+                __DIR__.'/Models' => app_path('Models'),
             ], 'database');
 
             // Registering package commands.

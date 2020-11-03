@@ -9,30 +9,83 @@ A minimalist admin panel using coreui.
 
 ## Installation
 
-You can install the package via composer:
+First, you have to install laravel fortify
+
+```bash
+composer require laravel/fortify
+
+php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
+
+php artisan migrate
+``` 
+
+Install the package via composer:
 
 ```bash
 composer require santos-sabanari/laravel-foundation
 ```
 
-## Usage
+Add this code to boot function in FortifyServiceProvider
 
 ``` php
-// Usage description here
+Fortify::createUsersUsing(CreateNewUser::class);
+Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
+Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
+Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+
+Fortify::loginView(function () {
+    return view('laravel-foundation::auth.login');
+});
+
+Fortify::authenticateUsing(function (LoginRequest $request) {
+    $user = User::where('email', $request->username)->first();
+    if (! $user) {
+        $user = User::where('username', $request->username)->first();
+    }
+
+    if ($user &&
+        Hash::check($request->password, $user->password)) {
+        event(new UserLoggedIn($user));
+
+        return $user;
+    }
+});
 ```
 
-### Testing
+Add this code to $middlewareGroups in Http/Kernel.php
 
-``` bash
-composer test
+``` php
+'admin' => [
+    'auth',
+    'is_admin',
+],
 ```
 
-### Changelog
+Add this code to $routeMiddleware in Http/Kernel.php
+ 
+``` php
+'is_admin' => \SantosSabanari\LaravelFoundation\Http\Middleware\AdminCheck::class,
+'is_super_admin' => \SantosSabanari\LaravelFoundation\Http\Middleware\SuperAdminCheck::class,
+'is_user' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserCheck::class,
+'type' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserTypeCheck::class,
+'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
+'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+```
 
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+Finaly, publish package files
+
+```bash
+php artisan laravel-foundation:install
+```
+
+### Usage
+
+To create master, use this command
+```bash
+php artisan laravel-foundation:master master field1 field2 field3
+```
 
 ## Contributing
-
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 ### Security
@@ -47,7 +100,3 @@ If you discover any security related issues, please email sabanari.santos@gmail.
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
