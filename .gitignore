@@ -1,7 +1,7 @@
-node_modules
+/node_modules
 build
 composer.lock
 docs
-vendor
+/vendor
 coverage
 .idea
