@@ -17,6 +17,17 @@ composer require laravel/fortify
 php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 ``` 
 
+Install laravel permission by spatie
+```bash
+composer require spatie/laravel-permission
+php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
+```
+
+Install laravel datatable package
+```bash
+composer require santos-sabanari/laravel-datatables
+```
+
 Install the package via composer:
 
 ```bash

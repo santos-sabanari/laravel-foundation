@@ -59,6 +59,13 @@ class InstallCommand extends Command
             '--tag' => 'database',
         ]);
 
+        // routes
+        file_put_contents(
+            base_path('routes/web.php'),
+            file_get_contents(__DIR__ . '/stubs/routes/web.stub'),
+            FILE_APPEND
+        );
+
         $this->info('All done!');
     }
 }
