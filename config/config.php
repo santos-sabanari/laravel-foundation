@@ -29,7 +29,7 @@ return [
     | Used at the top of the content
     |
     */
-    'company' => env('FOUNDATION_COMPANY', 'PT Santos Sabanari'),
+    'company' => env('FOUNDATION_COMPANY', 'Laravel Foundation'),
 
     /*
     |--------------------------------------------------------------------------
