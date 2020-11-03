@@ -5,12 +5,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use function config;
-use function date;
-use function file_get_contents;
-use function implode;
-use function str_replace;
-use const DIRECTORY_SEPARATOR;
 
 class ViewCommand extends GeneratorCommand
 {

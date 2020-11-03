@@ -5,10 +5,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use function file_get_contents;
-use function file_put_contents;
-use function str_replace;
-use const FILE_APPEND;
 
 class RouteCommand extends GeneratorCommand
 {

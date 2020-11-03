@@ -5,10 +5,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use function implode;
-use function ltrim;
-use function str_replace;
-use function trim;
 
 class UpdateRequestCommand extends GeneratorCommand
 {
