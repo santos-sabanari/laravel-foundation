@@ -5,8 +5,6 @@ namespace Database\Seeders;
 use App\Models\User;
 use SantosSabanari\LaravelFoundation\Traits\DisableForeignKeys;
 use Illuminate\Database\Seeder;
-use function app;
-use function now;
 
 class UserSeeder extends Seeder
 {
