@@ -56,20 +56,9 @@ class InstallCommand extends Command
 
         $this->call('vendor:publish', [
             '--provider' => "SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider",
-            '--tag' => 'migrations',
+            '--tag' => 'database',
         ]);
 
-//        $this->exportBackend();
-
         $this->info('All done!');
-    }
-
-    protected function exportBackend()
-    {
-        file_put_contents(
-            base_path('routes/web.php'),
-            file_get_contents(__DIR__ . '/../stubs/routes.stub'),
-            FILE_APPEND
-        );
     }
 }
