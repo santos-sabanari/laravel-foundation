@@ -56,7 +56,7 @@
                     <div class="card text-white bg-primary py-5 d-md-down-none card-block d-flex" style="width:44%">
                         <div class="card-body align-items-center d-flex flex-column justify-content-center">
                             <div class="p-2">
-                                <img src="{{asset('vendor/laravel-foundation/images/logo.png')}}" class="img-fluid" style="height: 10rem;"/>
+                                <img src="{{asset('images/logo-auth.png')}}" class="img-fluid" style="height: 10rem;"/>
                             </div>
 
                             @if(Route::has('register'))

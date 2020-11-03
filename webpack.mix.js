@@ -3,10 +3,6 @@ const mix = require('laravel-mix');
 mix.setPublicPath('public');
 mix.setResourceRoot('../');
 
-/* Copy Directories */
-mix.copyDirectory('resources/assets/favicon', 'public/favicon');
-mix.copyDirectory('resources/assets/images', 'public/images');
-
 /* CSS */
 mix.sass('resources/assets/sass/app.scss', 'public/css/app.css');
 
