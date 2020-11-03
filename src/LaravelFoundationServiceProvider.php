@@ -30,8 +30,6 @@ use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ViewCommand;
 use SantosSabanari\LaravelFoundation\Http\Livewire\RolesDatatable;
 use SantosSabanari\LaravelFoundation\Http\Livewire\UsersDatatable;
-use function app_path;
-use function database_path;
 
 class LaravelFoundationServiceProvider extends ServiceProvider
 {

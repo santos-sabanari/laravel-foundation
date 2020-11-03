@@ -23,6 +23,12 @@ Install the package via composer:
 composer require santos-sabanari/laravel-foundation
 ```
 
+Publish package files
+
+```bash
+php artisan laravel-foundation:install
+```
+
 Add this code to boot function in FortifyServiceProvider
 
 ``` php
@@ -50,6 +56,14 @@ Fortify::authenticateUsing(function (LoginRequest $request) {
 });
 ```
 
+Add this code to "Package Service Providers" in config/app.php
+
+``` php
+SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider::class,
+SantosSabanari\LaravelDatatables\LaravelDatatablesServiceProvider::class,
+App\Providers\FortifyServiceProvider::class,
+```
+
 Add this code to $middlewareGroups in Http/Kernel.php
 
 ``` php
@@ -70,11 +84,9 @@ Add this code to $routeMiddleware in Http/Kernel.php
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
 ```
 
-Finaly, publish package files and migrate the database
+Finaly, migrate the database
 
 ```bash
-php artisan laravel-foundation:install
-
 php artisan migrate
 ```
 
