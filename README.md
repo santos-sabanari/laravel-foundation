@@ -40,9 +40,16 @@ Publish package files
 php artisan laravel-foundation:install
 ```
 
-Add this code to boot function in FortifyServiceProvider
+Add this code to boot function in FortifyServiceProvider.
 
 ``` php
+// Load class
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Laravel\Fortify\Http\Requests\LoginRequest;
+use SantosSabanari\LaravelFoundation\Events\UserLoggedIn;
+
+// boot function
 Fortify::createUsersUsing(CreateNewUser::class);
 Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
 Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
@@ -66,6 +73,12 @@ Fortify::authenticateUsing(function (LoginRequest $request) {
     }
 });
 ```
+
+change to this code array in config/fortify.php
+
+``` php
+'username' => 'username',
+``` 
 
 Add this code to "Package Service Providers" in config/app.php
 
@@ -93,6 +106,15 @@ Add this code to $routeMiddleware in Http/Kernel.php
 'type' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserTypeCheck::class,
 'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+```
+
+Add this code to App/Provider/EventServiceProvider
+
+``` php
+protected $subscribe = [
+    RoleEventListener::class,
+    UserEventListener::class,
+];
 ```
 
 Finaly, migrate the database
