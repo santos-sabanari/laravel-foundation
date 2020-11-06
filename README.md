@@ -9,7 +9,7 @@ A minimalist admin panel using coreui.
 
 ## Installation
 
-First, you have to install laravel fortify
+First, you have to install [laravel fortify](https://github.com/laravel/fortify)
 
 ```bash
 composer require laravel/fortify
@@ -17,13 +17,26 @@ composer require laravel/fortify
 php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
 ``` 
 
-Install laravel permission by spatie
+Install [log viewer](https://github.com/ARCANEDEV/LogViewer/blob/master/_docs/1.Installation-and-Setup.md) by Arcanedev
+
+```bash
+composer require arcanedev/log-viewer:8.0
+php artisan log-viewer:publish
+```
+
+Install [laravel activitylog](https://spatie.be/docs/laravel-activitylog) by spatie
+```bash
+composer require spatie/laravel-activitylog
+php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="migrations"
+```
+
+Install [laravel permission](https://spatie.be/docs/laravel-permission) by spatie
 ```bash
 composer require spatie/laravel-permission
 php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 ```
 
-Install laravel datatable package
+Install [laravel datatable](https://github.com/santos-sabanari/laravel-datatables) package
 ```bash
 composer require santos-sabanari/laravel-datatables
 ```
@@ -88,18 +101,16 @@ SantosSabanari\LaravelDatatables\LaravelDatatablesServiceProvider::class,
 App\Providers\FortifyServiceProvider::class,
 ```
 
-Add this code to $middlewareGroups in Http/Kernel.php
+Add this code to in Http/Kernel.php
 
 ``` php
+// $middlewareGroups
 'admin' => [
     'auth',
     'is_admin',
 ],
-```
 
-Add this code to $routeMiddleware in Http/Kernel.php
- 
-``` php
+// $routeMiddleware
 'is_admin' => \SantosSabanari\LaravelFoundation\Http\Middleware\AdminCheck::class,
 'is_super_admin' => \SantosSabanari\LaravelFoundation\Http\Middleware\SuperAdminCheck::class,
 'is_user' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserCheck::class,
@@ -111,6 +122,11 @@ Add this code to $routeMiddleware in Http/Kernel.php
 Add this code to App/Provider/EventServiceProvider
 
 ``` php
+// load class
+use SantosSabanari\LaravelFoundation\Listeners\RoleEventListener;
+use SantosSabanari\LaravelFoundation\Listeners\UserEventListener;
+
+// below $listen
 protected $subscribe = [
     RoleEventListener::class,
     UserEventListener::class,
