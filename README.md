@@ -36,11 +36,6 @@ composer require spatie/laravel-permission
 php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
 ```
 
-Install [laravel datatable](https://github.com/santos-sabanari/laravel-datatables) package
-```bash
-composer require santos-sabanari/laravel-datatables
-```
-
 Install the package via composer:
 
 ```bash
