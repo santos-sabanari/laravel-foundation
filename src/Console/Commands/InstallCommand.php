@@ -64,9 +64,7 @@ class InstallCommand extends Command
             '--provider' => "Laravel\Fortify\FortifyServiceProvider"
         ]);
 
-        $this->call('log-viewer:publish', [
-            '--provider' => "Laravel\Fortify\FortifyServiceProvider"
-        ]);
+        $this->call('log-viewer:publish');
 
         $this->call('vendor:publish', [
             '--provider' => "Spatie\Activitylog\ActivitylogServiceProvider",
@@ -77,6 +75,7 @@ class InstallCommand extends Command
             '--provider' => "Spatie\Permission\PermissionServiceProvider"
         ]);
 
+        // TODO : Check Backend is added or not
         // routes
         file_put_contents(
             base_path('routes/web.php'),
