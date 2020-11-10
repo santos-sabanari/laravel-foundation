@@ -4,7 +4,11 @@ namespace SantosSabanari\LaravelFoundation;
 
 include_once(__DIR__ . '/Utilities/helpers.php');
 
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Fortify\Fortify;
+use Laravel\Fortify\Http\Requests\LoginRequest;
 use Livewire\Livewire;
 use SantosSabanari\LaravelFoundation\Console\Commands\ControllerCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DatatableCommand;
@@ -28,6 +32,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\TraitMethodCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitScopeCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ViewCommand;
+use SantosSabanari\LaravelFoundation\Events\UserLoggedIn;
 use SantosSabanari\LaravelFoundation\Http\Livewire\RolesDatatable;
 use SantosSabanari\LaravelFoundation\Http\Livewire\UsersDatatable;
 
@@ -39,6 +44,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'laravel-foundation');
+        $this->processFortify();
 
         Livewire::component('users-datatable', UsersDatatable::class);
         Livewire::component('roles-datatable', RolesDatatable::class);
@@ -57,10 +63,10 @@ class LaravelFoundationServiceProvider extends ServiceProvider
             ], 'views');
 
             $this->publishes([
-                __DIR__.'/../database/migrations' => database_path('migrations'),
-                __DIR__.'/../database/factories' => database_path('factories'),
-                __DIR__.'/../database/seeders' => database_path('seeders'),
-                __DIR__.'/Models' => app_path('Models'),
+                __DIR__ . '/../database/migrations' => database_path('migrations'),
+                __DIR__ . '/../database/factories' => database_path('factories'),
+                __DIR__ . '/../database/seeders' => database_path('seeders'),
+                __DIR__ . '/Models' => app_path('Models'),
             ], 'database');
 
             // Registering package commands.
@@ -103,5 +109,29 @@ class LaravelFoundationServiceProvider extends ServiceProvider
         $this->app->singleton('laravel-foundation', function () {
             return new LaravelFoundation;
         });
+    }
+
+    private function processFortify()
+    {
+        if (class_exists(Fortify::class)) {
+            // Login
+            Fortify::loginView(function () {
+                return view('laravel-foundation::auth.login');
+            });
+
+            Fortify::authenticateUsing(function (LoginRequest $request) {
+                $user = User::where('email', $request->username)->first();
+                if (! $user) {
+                    $user = User::where('username', $request->username)->first();
+                }
+
+                if ($user &&
+                    Hash::check($request->password, $user->password)) {
+                    event(new UserLoggedIn($user));
+
+                    return $user;
+                }
+            });
+        }
     }
 }
