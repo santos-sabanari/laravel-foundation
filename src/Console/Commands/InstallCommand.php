@@ -59,6 +59,24 @@ class InstallCommand extends Command
             '--tag' => 'database',
         ]);
 
+        // Publish vendor package
+        $this->call('vendor:publish', [
+            '--provider' => "Laravel\Fortify\FortifyServiceProvider"
+        ]);
+
+        $this->call('log-viewer:publish', [
+            '--provider' => "Laravel\Fortify\FortifyServiceProvider"
+        ]);
+
+        $this->call('vendor:publish', [
+            '--provider' => "Spatie\Activitylog\ActivitylogServiceProvider",
+            '--tag' => 'migrations',
+        ]);
+
+        $this->call('vendor:publish', [
+            '--provider' => "Spatie\Permission\PermissionServiceProvider"
+        ]);
+
         // routes
         file_put_contents(
             base_path('routes/web.php'),

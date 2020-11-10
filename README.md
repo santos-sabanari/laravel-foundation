@@ -9,80 +9,14 @@ A minimalist admin panel using coreui.
 
 ## Installation
 
-First, you have to install [laravel fortify](https://github.com/laravel/fortify)
-
-```bash
-composer require laravel/fortify
-
-php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
-``` 
-
-Install [log viewer](https://github.com/ARCANEDEV/LogViewer/blob/master/_docs/1.Installation-and-Setup.md) by Arcanedev
-
-```bash
-composer require arcanedev/log-viewer:8.0
-php artisan log-viewer:publish
-```
-
-Install [laravel activitylog](https://spatie.be/docs/laravel-activitylog) by spatie
-```bash
-composer require spatie/laravel-activitylog
-php artisan vendor:publish --provider="Spatie\Activitylog\ActivitylogServiceProvider" --tag="migrations"
-```
-
-Install [laravel permission](https://spatie.be/docs/laravel-permission) by spatie
-```bash
-composer require spatie/laravel-permission
-php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-```
-
 Install the package via composer:
 
 ```bash
 composer require santos-sabanari/laravel-foundation
-```
-
-Publish package files
-
-```bash
 php artisan laravel-foundation:install
 ```
 
-Add this code to boot function in FortifyServiceProvider.
-
-``` php
-// Load class
-use App\Models\User;
-use Illuminate\Support\Facades\Hash;
-use Laravel\Fortify\Http\Requests\LoginRequest;
-use SantosSabanari\LaravelFoundation\Events\UserLoggedIn;
-
-// boot function
-Fortify::createUsersUsing(CreateNewUser::class);
-Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
-Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
-
-Fortify::loginView(function () {
-    return view('laravel-foundation::auth.login');
-});
-
-Fortify::authenticateUsing(function (LoginRequest $request) {
-    $user = User::where('email', $request->username)->first();
-    if (! $user) {
-        $user = User::where('username', $request->username)->first();
-    }
-
-    if ($user &&
-        Hash::check($request->password, $user->password)) {
-        event(new UserLoggedIn($user));
-
-        return $user;
-    }
-});
-```
-
-change to this code array in config/fortify.php
+Change to this code array in config/fortify.php
 
 ``` php
 'username' => 'username',
@@ -140,6 +74,13 @@ To create master, use this command
 ```bash
 php artisan laravel-foundation:master master field1 field2 field3
 ```
+
+## Require Package
+The require packages below has automatically installed when installing laravel foundation.
+1. [Laravel Fortify](https://github.com/laravel/fortify)
+2. [Log Viewer](https://github.com/ARCANEDEV/LogViewer/blob/master/_docs/1.Installation-and-Setup.md) by Arcanedev
+3. [Laravel Activitylog](https://spatie.be/docs/laravel-activitylog) by Spatie
+4. [Laravel Permission](https://spatie.be/docs/laravel-permission) by Spatie
 
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
