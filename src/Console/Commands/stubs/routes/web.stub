@@ -1,6 +1,7 @@
 
 
 
+/*
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -10,6 +11,12 @@ use SantosSabanari\LaravelFoundation\Http\Controllers\UserController;
 use SantosSabanari\LaravelFoundation\Http\Controllers\UserPasswordController;
 use SantosSabanari\LaravelFoundation\Http\Controllers\UserSessionController;
 use Tabuna\Breadcrumbs\Trail;
+
+Route::get('logout', function () {
+    session()->flush();
+    auth()->logout();
+    return redirect()->route('homepage');
+})->name('logout');
 
 // BACKEND
 Route::group([
@@ -137,3 +144,4 @@ Route::group([
         });
     });
 });
+*/
