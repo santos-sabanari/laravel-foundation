@@ -32,5 +32,8 @@
         "select2": "~4.0",
         "sweetalert2": "^10.3.5",
         "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "select2-theme-bootstrap4": "^1.0.0"
     }
 }
