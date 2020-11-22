@@ -10,11 +10,6 @@
 
     @yield('meta')
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="32x32" href="{{asset('images/favicon-32x32.png')}}">
-    <link rel="icon" type="image/png" sizes="96x96" href="{{asset('images/favicon-96x96.png')}}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('images/favicon-16x16.png')}}">
-
     @stack('before-styles')
     <link href="{{ mix('css/app.css', 'vendor/laravel-foundation') }}" rel="stylesheet">
     <livewire:styles />
