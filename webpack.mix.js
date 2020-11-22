@@ -7,10 +7,7 @@ mix.setResourceRoot('../');
 mix.sass('resources/assets/sass/app.scss', 'public/css/app.css');
 
 /* JS */
-mix.js('resources/assets/js/app.js', 'public/js/app.js')
-    .extract([
-        'sweetalert2'
-    ]);
+mix.js('resources/assets/js/app.js', 'public/js/app.js');
 
 mix.sourceMaps();
 
