@@ -22,14 +22,6 @@ Change to this code array in config/fortify.php
 'username' => 'username',
 ``` 
 
-Add this code to "Package Service Providers" in config/app.php
-
-``` php
-SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider::class,
-SantosSabanari\LaravelDatatables\LaravelDatatablesServiceProvider::class,
-App\Providers\FortifyServiceProvider::class,
-```
-
 Add this code to in Http/Kernel.php
 
 ``` php

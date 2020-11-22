@@ -67,8 +67,7 @@ class InstallCommand extends Command
         $this->call('log-viewer:publish');
 
         $this->call('vendor:publish', [
-            '--provider' => "Spatie\Activitylog\ActivitylogServiceProvider",
-            '--tag' => 'migrations',
+            '--provider' => "Spatie\Activitylog\ActivitylogServiceProvider"
         ]);
 
         $this->call('vendor:publish', [
