@@ -17,7 +17,6 @@
 
     @stack('before-styles')
     <link href="{{ mix('css/app.css', 'vendor/laravel-foundation') }}" rel="stylesheet">
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     <livewire:styles />
     @stack('after-styles')
 </head>
@@ -29,10 +28,6 @@
 <script src="{{ mix('js/manifest.js', 'vendor/laravel-foundation') }}"></script>
 <script src="{{ mix('js/vendor.js', 'vendor/laravel-foundation') }}"></script>
 <script src="{{ mix('js/app.js', 'vendor/laravel-foundation') }}"></script>
-
-<script src="{{ mix('js/manifest.js') }}"></script>
-<script src="{{ mix('js/vendor.js') }}"></script>
-<script src="{{ mix('js/app.js') }}"></script>
 <livewire:scripts />
 @stack('after-scripts')
 </body>

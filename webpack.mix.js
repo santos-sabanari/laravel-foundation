@@ -15,6 +15,7 @@ mix.js('resources/assets/js/app.js', 'public/js/app.js')
         'popper.js',
         'axios',
         'sweetalert2',
+        'select2',
         'lodash'
     ]);
 
