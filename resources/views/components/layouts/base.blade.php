@@ -20,10 +20,10 @@
 {{ $slot }}
 
 @stack('before-scripts')
+<livewire:scripts />
 <script src="{{ mix('js/manifest.js', 'vendor/laravel-foundation') }}"></script>
 <script src="{{ mix('js/vendor.js', 'vendor/laravel-foundation') }}"></script>
 <script src="{{ mix('js/app.js', 'vendor/laravel-foundation') }}"></script>
-<livewire:scripts />
 @stack('after-scripts')
 </body>
 </html>
