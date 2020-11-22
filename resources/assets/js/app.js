@@ -1,5 +1,7 @@
 import 'alpinejs'
 
+require('./bootstrap');
+
 // CoreUI
 require('@coreui/coreui');
 

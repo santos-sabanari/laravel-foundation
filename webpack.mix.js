@@ -9,14 +9,8 @@ mix.sass('resources/assets/sass/app.scss', 'public/css/app.css');
 /* JS */
 mix.js('resources/assets/js/app.js', 'public/js/app.js')
     .extract([
-        'alpinejs',
-        'jquery',
-        'bootstrap',
-        'popper.js',
-        'axios',
         'sweetalert2',
-        'select2',
-        'lodash'
+        'select2'
     ]);
 
 mix.sourceMaps();
