@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function config;
 use function str_replace;
 
 class EditFormLivewireCommand extends GeneratorCommand
@@ -40,6 +41,12 @@ class EditFormLivewireCommand extends GeneratorCommand
         $name = Str::studly($this->argument('name'));
         $stub = str_replace('{{StudlyCase}}', $name, $stub);
 
+        $camel = Str::camel($this->argument('name'));
+        $stub = str_replace('{{camelCase}}', $camel, $stub);
+
+        $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
+        $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
+
         $fields = [];
         $rules = [];
         $attributes = [];
@@ -50,8 +57,8 @@ class EditFormLivewireCommand extends GeneratorCommand
         }
 
         $text = implode("\n\t", $fields);
-        $textrules = implode("\n\t\t\t", $rules);
-        $textattributes = implode("\n\t\t\t", $attributes);
+        $textrules = implode("\n\t\t", $rules);
+        $textattributes = implode("\n\t\t", $attributes);
 
         $stub = str_replace('DummyFieldsAttributes', $textattributes, $stub);
         $stub = str_replace('DummyFieldsRules', $textrules, $stub);

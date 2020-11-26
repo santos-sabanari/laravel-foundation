@@ -36,6 +36,7 @@ class MasterCommand extends GeneratorCommand
         $this->createFactory();
         $this->createSeeder();
         $this->createLivewire();
+        $this->createDatatable();
         $this->createController();
         $this->createView();
         $this->createLivewireView();
@@ -149,6 +150,14 @@ class MasterCommand extends GeneratorCommand
     private function createSeeder()
     {
         $this->call('laravel-foundation:seeder', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createDatatable()
+    {
+        $this->call('laravel-foundation:datatable', [
             'name' => $this->name,
             'fields' => $this->fields,
         ]);
