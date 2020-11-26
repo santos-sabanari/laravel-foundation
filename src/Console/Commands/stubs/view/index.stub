@@ -1,4 +1,4 @@
-<x-laravel-foundation::layouts.app :title="'{{StudlyCase}}'">
+<x-laravel-foundation::layouts.app :title="'{{FirstWordCase}}'">
     <x-laravel-foundation::utils.card>
         <x-slot name="header">
             <x-laravel-foundation::utils.link

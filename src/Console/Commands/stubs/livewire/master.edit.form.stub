@@ -34,7 +34,7 @@ class EditForm extends Component
 
         ${{camelCase}}Service->update($this->{{camelCase}}, $validated);
 
-        session()->flash('flash_success', 'The {{camelCase}} was successfully updated.');
+        session()->flash('flash_success', 'The {{FirstWordCase}} was successfully updated.');
 
         return redirect()->route('{{lowerCaseNamespace}}.{{lowerCase}}.index');
     }
