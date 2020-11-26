@@ -74,6 +74,10 @@ class InstallCommand extends Command
             '--provider' => "Spatie\Permission\PermissionServiceProvider"
         ]);
 
+        $this->call('vendor:publish', [
+            '--provider' => "ProtoneMedia\LaravelFormComponents\Support\ServiceProvider"
+        ]);
+
         // TODO : Check Backend is added or not
         // routes
         file_put_contents(
