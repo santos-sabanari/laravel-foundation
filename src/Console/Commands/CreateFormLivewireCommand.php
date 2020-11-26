@@ -5,7 +5,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use function str_replace;
 
 class CreateFormLivewireCommand extends GeneratorCommand
 {
@@ -45,6 +44,9 @@ class CreateFormLivewireCommand extends GeneratorCommand
 
         $lower = Str::lower($this->argument('name'));
         $stub = str_replace('{{lowerCase}}', $lower, $stub);
+
+        $firstword = Str::title(str_replace('-',' ',$this->argument('name')));
+        $stub = str_replace('{{FirstWordCase}}', $firstword, $stub);
 
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
         $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);

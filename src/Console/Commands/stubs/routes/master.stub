@@ -19,7 +19,7 @@ Route::group([
                 ->push(__('Create {{FirstWordCase}}'), route('{{lowerCaseNamespace}}.{{lowerCase}}.create'));
         });
 
-    Route::get('edit/{{camelCase}}', [{{StudlyCase}}Controller::class, 'edit'])
+    Route::get('edit/{{{camelCase}}}', [{{StudlyCase}}Controller::class, 'edit'])
         ->name('edit')
         ->breadcrumbs(function (Trail $trail, ${{camelCase}}) {
             $trail->parent('{{lowerCaseNamespace}}.{{lowerCase}}.index')

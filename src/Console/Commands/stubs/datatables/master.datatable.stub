@@ -45,6 +45,6 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
         ${{camelCase}}Service->destroy(${{camelCase}});
         session()->flash('flash_success', 'The {{FirstWordCase}} was successfully deleted.');
 
-        return redirect()->route('backend.{{camelCase}}.index');
+        return redirect()->route('backend.{{lowerCase}}.index');
     }
 }

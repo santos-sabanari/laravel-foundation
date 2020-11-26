@@ -36,11 +36,11 @@ class EditForm extends Component
 
         session()->flash('flash_success', 'The {{camelCase}} was successfully updated.');
 
-        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index');
+        return redirect()->route('{{lowerCaseNamespace}}.{{lowerCase}}.index');
     }
 
     public function render()
     {
-        return view('livewire.{{lowerCaseNamespace}}.{{camelCase}}.edit');
+        return view('livewire.{{lowerCaseNamespace}}.{{lowerCase}}.edit');
     }
 }
