@@ -73,10 +73,6 @@ class LaravelFoundationServiceProvider extends ServiceProvider
             $this->commands([
                 InstallCommand::class,
                 MasterCommand::class,
-                StoreRequestCommand::class,
-                UpdateRequestCommand::class,
-                EditRequestCommand::class,
-                DeleteRequestCommand::class,
                 ServiceCommand::class,
                 ModelCommand::class,
                 EventCreatedCommand::class,

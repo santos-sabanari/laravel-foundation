@@ -65,6 +65,6 @@ class DatatableCommand extends GeneratorCommand
     {
         $name = Str::studly($this->argument('name'));
 
-        return $rootNamespace . '\Http\Livewire\\' . $name . '\\' . Str::studly(config('laravel-foundation.namespace'));
+        return $rootNamespace . '\Http\Livewire\\' . Str::studly(config('laravel-foundation.namespace')). '\\'. $name;
     }
 }
