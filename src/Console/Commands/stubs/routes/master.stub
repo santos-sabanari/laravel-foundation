@@ -23,7 +23,7 @@ Route::group([
         ->name('edit')
         ->breadcrumbs(function (Trail $trail, ${{camelCase}}) {
             $trail->parent('{{lowerCaseNamespace}}.{{lowerCase}}.index')
-                ->push(__('Editing :{{lowerCase}}', ['{{camelCase}}' => ${{camelCase}}->name]), route('{{lowerCaseNamespace}}.{{lowerCase}}.edit', ${{camelCase}}));
+                ->push(__('Editing :{{camelCase}}', ['{{camelCase}}' => ${{camelCase}}->name]), route('{{lowerCaseNamespace}}.{{lowerCase}}.edit', ${{camelCase}}));
         });
 });
 */
