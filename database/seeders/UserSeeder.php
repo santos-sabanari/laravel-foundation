@@ -50,6 +50,8 @@ class UserSeeder extends Seeder
             'active' => true,
         ]);
 
+        // \App\Models\User::factory(200)->create();
+
         $this->enableForeignKeys();
     }
 }

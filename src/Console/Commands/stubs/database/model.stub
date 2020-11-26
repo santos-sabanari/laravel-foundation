@@ -10,7 +10,8 @@ use App\Traits\{{StudlyCase}}Scope;
 
 class {{StudlyCase}} extends Model
 {
-    use {{StudlyCase}}Attribute,
+    use HasFactory,
+        {{StudlyCase}}Attribute,
         {{StudlyCase}}Method;
 
     protected $fillable = [

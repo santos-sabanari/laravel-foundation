@@ -9,7 +9,6 @@ use Livewire\Component;
 class CreateForm extends Component
 {
     DummyFields
-    protected $model;
 
     protected $rules = [
         DummyFieldsRules

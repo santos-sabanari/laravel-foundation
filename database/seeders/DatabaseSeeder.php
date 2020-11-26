@@ -18,7 +18,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(200)->create();
         $this->truncateMultiple([
             'failed_jobs',
         ]);
