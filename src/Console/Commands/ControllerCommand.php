@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function str_replace;
 
 class ControllerCommand extends GeneratorCommand
 {
@@ -41,6 +42,9 @@ class ControllerCommand extends GeneratorCommand
 
         $camel = Str::camel($this->argument('name'));
         $stub = str_replace('{{camelCase}}', $camel, $stub);
+
+        $lower = Str::lower($this->argument('name'));
+        $stub = str_replace('{{lowerCase}}', $lower, $stub);
 
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
         $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
