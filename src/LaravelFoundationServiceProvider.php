@@ -11,8 +11,11 @@ use Laravel\Fortify\Fortify;
 use Laravel\Fortify\Http\Requests\LoginRequest;
 use Livewire\Livewire;
 use SantosSabanari\LaravelFoundation\Console\Commands\ControllerCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DatatableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\EditFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EventCreatedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EventDeletedCommand;
@@ -20,7 +23,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\EventUpdatedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\FactoryCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\InstallCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ListenerCommand;
-use SantosSabanari\LaravelFoundation\Console\Commands\LivewireCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\LivewireViewCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MigrationCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
@@ -89,7 +92,9 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 DatatableCommand::class,
                 ControllerCommand::class,
                 ViewCommand::class,
-                LivewireCommand::class,
+                LivewireViewCommand::class,
+                CreateFormLivewireCommand::class,
+                EditFormLivewireCommand::class,
                 RouteCommand::class,
             ]);
         }

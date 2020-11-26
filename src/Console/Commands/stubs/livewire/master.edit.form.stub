@@ -1,0 +1,46 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Models\{{StudlyCase}};
+use App\Services\{{StudlyCase}}Service;
+use Livewire\Component;
+
+class EditForm extends Component
+{
+    public {{StudlyCase}} ${{camelCase}}
+
+    protected $rules = [
+        DummyFieldsRules
+    ];
+
+    protected $validationAttributes = [
+        DummyFieldsAttributes
+    ];
+
+    public function mount({{StudlyCase}} ${{camelCase}})
+    {
+        $this->{{camelCase}} = ${{camelCase}};
+    }
+
+    public function updated($propertyName)
+    {
+        $this->validateOnly($propertyName);
+    }
+
+    public function submit({{StudlyCase}}Service ${{camelCase}}Service)
+    {
+        $validated = $this->validate();
+
+        ${{camelCase}}Service->update($this->{{camelCase}}, $validated);
+
+        session()->flash('flash_success', 'The {{camelCase}} was successfully updated.');
+
+        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index');
+    }
+
+    public function render()
+    {
+        return view('livewire.{{lowerCaseNamespace}}.{{camelCase}}.edit');
+    }
+}

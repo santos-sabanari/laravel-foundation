@@ -6,14 +6,14 @@ use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
 
-class LivewireCommand extends GeneratorCommand
+class LivewireViewCommand extends GeneratorCommand
 {
-    protected $signature = 'laravel-foundation:livewire
-                            {name : The name of the livewire}
-                            {fields* : The livewire fields}
-                            {--type= : The type for creating livewire}';
+    protected $signature = 'laravel-foundation:livewire-view
+                            {name : The name of the livewire-view}
+                            {fields* : The livewire-view fields}
+                            {--type= : The type for creating livewire-view}';
 
-    protected $description = 'Create a livewire';
+    protected $description = 'Create a livewire-view';
 
     protected $type = 'Livewire';
 
@@ -47,11 +47,11 @@ class LivewireCommand extends GeneratorCommand
         $fieldRows = [];
         foreach ($this->argument('fields') as $field) {
             if ($this->option('type') == 'create') {
-                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/livewire/create.field.stub'));
+                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/livewire/create.field.stub'));
                 $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
                 $fieldRows[] = $fieldRow;
             } elseif ($this->option('type') == 'edit') {
-                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/livewire/edit.field.stub'));
+                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/livewire/edit.field.stub'));
                 $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
                 $fieldRow = str_replace('{{camelCase}}', $camel, $fieldRow);
 
@@ -67,9 +67,9 @@ class LivewireCommand extends GeneratorCommand
     protected function getStub()
     {
         if ($this->option('type') == 'create') {
-            return __DIR__ . '/stubs/livewire/create.stub';
+            return __DIR__ . '/stubs/view/livewire/create.stub';
         } elseif ($this->option('type') == 'edit') {
-            return __DIR__ . '/stubs/livewire/edit.stub';
+            return __DIR__ . '/stubs/view/livewire/edit.stub';
         }
     }
 
