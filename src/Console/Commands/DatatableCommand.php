@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use const DIRECTORY_SEPARATOR;
 
 class DatatableCommand extends GeneratorCommand
 {
@@ -62,6 +63,8 @@ class DatatableCommand extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Http\Livewire';
+        $name = Str::studly($this->argument('name'));
+
+        return $rootNamespace . '\Http\Livewire\\' . $name . '\\' . Str::studly(config('laravel-foundation.namespace'));
     }
 }

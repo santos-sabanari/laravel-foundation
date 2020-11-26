@@ -27,7 +27,6 @@ class MasterCommand extends GeneratorCommand
         $this->getInput();
 
         // process
-        $this->createRequest();
         $this->createService();
         $this->createModel();
         $this->createEvent();
@@ -36,7 +35,7 @@ class MasterCommand extends GeneratorCommand
         $this->createMigration();
         $this->createFactory();
         $this->createSeeder();
-        $this->createDatatable();
+        $this->createLivewire();
         $this->createController();
         $this->createView();
         $this->createRoute();
@@ -70,30 +69,6 @@ class MasterCommand extends GeneratorCommand
             $this->fields [] = trim($field);
         }
     }
-
-    private function createRequest()
-    {
-        $this->call('laravel-foundation:store-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        $this->call('laravel-foundation:update-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        $this->call('laravel-foundation:edit-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        $this->call('laravel-foundation:delete-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-    }
-
     private function createService()
     {
         $this->call('laravel-foundation:service', [
@@ -178,12 +153,18 @@ class MasterCommand extends GeneratorCommand
         ]);
     }
 
-    private function createDatatable()
+    private function createLivewire()
     {
+        // Datatable
         $this->call('laravel-foundation:datatable', [
             'name' => $this->name,
             'fields' => $this->fields,
         ]);
+
+        // Create Form
+
+        // Edit Form
+
     }
 
     private function createController()
