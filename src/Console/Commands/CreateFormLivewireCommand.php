@@ -5,8 +5,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use function config;
-use function str_replace;
 
 class CreateFormLivewireCommand extends GeneratorCommand
 {
