@@ -47,7 +47,6 @@ class DatatableCommand extends GeneratorCommand
         foreach ($this->argument('fields') as $field) {
             $field = Str::studly($field);
             $columns[] = "Column::make(__('$field'))->searchable()->sortable(),";
-
         }
 
         $text = implode("\n\t\t\t", $columns);

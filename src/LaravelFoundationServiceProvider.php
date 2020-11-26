@@ -20,6 +20,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\EventUpdatedCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\FactoryCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\InstallCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ListenerCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\LivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MigrationCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
@@ -88,6 +89,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 DatatableCommand::class,
                 ControllerCommand::class,
                 ViewCommand::class,
+                LivewireCommand::class,
                 RouteCommand::class,
             ]);
         }

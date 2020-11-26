@@ -1,0 +1,28 @@
+<x-laravel-foundation::layouts.app :title="'Update {{StudlyCase}}'">
+    <livewire:{{lowerCaseNamespace}}.{{camelCase}}.edit-form :{{camelCase}}="${{camelCase}}" />
+</x-laravel-foundation::layouts.app>
+
+<div>
+    <div class="card">
+        <div class="card-header">
+            <x-laravel-foundation::utils.link
+                icon="fas cil-arrow-circle-left"
+                class="btn btn-sm btn-secondary"
+                :href="route('{{lowerCaseNamespace}}.{{camelCase}}.index')"
+                :text="__('Cancel')"
+            />
+        </div>
+
+        <x-form wire:submit.prevent="submit">
+            @wire
+            <div class="card-body">
+                DummyFields
+            </div><!--card-body-->
+            @endwire
+            <div class="card-footer text-right">
+                <x-form-submit>@lang('Update {{StudlyCase}}')</x-form-submit>
+            </div><!--card-footer-->
+        </x-form>
+
+    </div><!--card-->
+</div>

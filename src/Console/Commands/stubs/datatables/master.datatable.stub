@@ -26,4 +26,14 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
                 ->view('backend.{{camelCase}}.includes.action'),
         ];
     }
+
+    protected $listeners = ['destroy'];
+
+    public function destroy({{StudlyCase}}Service ${{camelCase}}Service, {{StudlyCase}} ${{camelCase}})
+    {
+        ${{camelCase}}Service->destroy(${{camelCase}});
+        session()->flash('flash_success', 'The {{camelCase}} was successfully deleted.');
+
+        return redirect()->route('backend.{{camelCase}}.index');
+    }
 }

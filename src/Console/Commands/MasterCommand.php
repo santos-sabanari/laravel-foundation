@@ -38,6 +38,7 @@ class MasterCommand extends GeneratorCommand
         $this->createLivewire();
         $this->createController();
         $this->createView();
+        $this->createLivewire();
         $this->createRoute();
 
         $this->info('All done!');
@@ -153,20 +154,6 @@ class MasterCommand extends GeneratorCommand
         ]);
     }
 
-    private function createLivewire()
-    {
-        // Datatable
-        $this->call('laravel-foundation:datatable', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        // Create Form
-
-        // Edit Form
-
-    }
-
     private function createController()
     {
         $this->call('laravel-foundation:controller', [
@@ -205,6 +192,21 @@ class MasterCommand extends GeneratorCommand
             'name' => $this->name,
             'fields' => $this->fields,
             '--type' => 'action',
+        ]);
+    }
+
+    private function createLivewire()
+    {
+        $this->call('laravel-foundation:livewire', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'create',
+        ]);
+
+        $this->call('laravel-foundation:livewire', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'edit',
         ]);
     }
 
