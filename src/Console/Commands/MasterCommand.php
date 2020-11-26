@@ -200,13 +200,11 @@ class MasterCommand extends GeneratorCommand
         $this->call('laravel-foundation:create-form-livewire', [
             'name' => $this->name,
             'fields' => $this->fields,
-            '--type' => 'create',
         ]);
 
         $this->call('laravel-foundation:edit-form-livewire', [
             'name' => $this->name,
             'fields' => $this->fields,
-            '--type' => 'edit',
         ]);
     }
 
