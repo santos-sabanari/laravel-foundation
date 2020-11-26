@@ -9,16 +9,16 @@ class {{StudlyCase}}Controller extends Controller
 {
     public function index()
     {
-        return view('{{lowerCaseNamespace}}.{{camelCase}}.index');
+        return view('{{lowerCaseNamespace}}.{{lowerCase}}.index');
     }
 
     public function create()
     {
-        return view('{{lowerCaseNamespace}}.{{camelCase}}.create');
+        return view('{{lowerCaseNamespace}}.{{lowerCase}}.create');
     }
 
     public function edit({{StudlyCase}} ${{camelCase}})
     {
-        return view('{{lowerCaseNamespace}}.{{camelCase}}.edit')->with{{StudlyCase}}(${{camelCase}});
+        return view('{{lowerCaseNamespace}}.{{lowerCase}}.edit')->with{{StudlyCase}}(${{camelCase}});
     }
 }

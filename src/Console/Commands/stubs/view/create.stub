@@ -1,3 +1,3 @@
-<x-laravel-foundation::layouts.app :title="'Create {{StudlyCase}}'">
-    <livewire:{{lowerCaseNamespace}}.{{camelCase}}.create-form />
+<x-laravel-foundation::layouts.app :title="'Create {{FirstWordCase}}'">
+    <livewire:{{lowerCaseNamespace}}.{{lowerCase}}.create-form />
 </x-laravel-foundation::layouts.app>

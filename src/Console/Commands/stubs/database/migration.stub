@@ -14,7 +14,7 @@ class Create{{StudlyCase}}Table extends Migration
      */
     public function up()
     {
-        Schema::create('{{camelCase}}s', function (Blueprint $table) {
+        Schema::create('{{underCase}}s', function (Blueprint $table) {
             $table->id();
             DummyFields
             $table->timestamps();
@@ -28,6 +28,6 @@ class Create{{StudlyCase}}Table extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('{{camelCase}}s');
+        Schema::dropIfExists('{{underCase}}s');
     }
 }

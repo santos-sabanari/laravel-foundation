@@ -4,8 +4,8 @@
             <x-laravel-foundation::utils.link
                 icon="fas fa-plus-circle"
                 class="btn btn-primary"
-                :href="route('{{lowerCaseNamespace}}.{{camelCase}}.create')"
-                :text="__('Create {{StudlyCase}}')"
+                :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.create')"
+                :text="__('Create {{FirstWordCase}}')"
             />
         </x-slot>
 
@@ -29,7 +29,7 @@
                             </script>
                         @endpush
 
-            <livewire:{{lowerCaseNamespace}}.{{camelCase}}.{{camelCase}}s-datatable />
+            <livewire:{{lowerCaseNamespace}}.{{lowerCase}}.{{lowerCase}}s-datatable />
         </x-slot>
     </x-laravel-foundation::utils.card>
 </x-laravel-foundation::layouts.app>

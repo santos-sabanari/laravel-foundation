@@ -1,3 +1,3 @@
-<x-laravel-foundation::layouts.app :title="'Update {{StudlyCase}}'">
-    <livewire:{{lowerCaseNamespace}}.{{camelCase}}.edit-form :{{camelCase}}="${{camelCase}}" />
+<x-laravel-foundation::layouts.app :title="'Update {{FirstWordCase}}'">
+    <livewire:{{lowerCaseNamespace}}.{{lowerCase}}.edit-form :{{camelCase}}="${{camelCase}}" />
 </x-laravel-foundation::layouts.app>

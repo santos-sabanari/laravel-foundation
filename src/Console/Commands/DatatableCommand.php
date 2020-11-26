@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function str_replace;
 use const DIRECTORY_SEPARATOR;
 
 class DatatableCommand extends GeneratorCommand
@@ -42,6 +43,12 @@ class DatatableCommand extends GeneratorCommand
 
         $camel = Str::camel($this->argument('name'));
         $stub = str_replace('{{camelCase}}', $camel, $stub);
+
+        $firstword = Str::title(str_replace('-',' ',$this->argument('name')));
+        $stub = str_replace('{{FirstWordCase}}', $firstword, $stub);
+
+        $lower = Str::lower($this->argument('name'));
+        $stub = str_replace('{{lowerCase}}', $lower, $stub);
 
         $columns = [];
         foreach ($this->argument('fields') as $field) {

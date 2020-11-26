@@ -22,9 +22,19 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
     public function columns(): array
     {
         return [
+            /*
+                        Column::make(__('Provinsi'), 'provinsi_label')
+                                        ->customAttribute()
+                                        ->html()
+                                        ->searchable(function ($builder, $term) {
+                                            return $builder->orWhereHas('provinsi', function ($query) use ($term) {
+                                                return $query->where('nama', 'like', '%' . $term . '%');
+                                            });
+                                        }),
+                        */
             DummyColumns
             Column::make(__('Actions'))
-                ->view('backend.{{camelCase}}.includes.action'),
+                ->view('backend.{{lowerCase}}.includes.action'),
         ];
     }
 
@@ -33,7 +43,7 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
     public function destroy({{StudlyCase}}Service ${{camelCase}}Service, {{StudlyCase}} ${{camelCase}})
     {
         ${{camelCase}}Service->destroy(${{camelCase}});
-        session()->flash('flash_success', 'The {{camelCase}} was successfully deleted.');
+        session()->flash('flash_success', 'The {{FirstWordCase}} was successfully deleted.');
 
         return redirect()->route('backend.{{camelCase}}.index');
     }

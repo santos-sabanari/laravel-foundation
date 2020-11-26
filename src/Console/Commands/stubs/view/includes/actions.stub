@@ -1,2 +1,2 @@
-<x-laravel-foundation::utils.edit-button :href="route('{{lowerCaseNamespace}}.{{camelCase}}.edit', $model)" />
+<x-laravel-foundation::utils.edit-button :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.edit', $model)" />
 <a class="btn btn-danger btn-sm text-white" wire:click="$emit('triggerDelete',{{ $model }})"><i class="fas fa-trash"></i> </a>

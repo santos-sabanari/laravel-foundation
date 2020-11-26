@@ -20,7 +20,9 @@ class RouteCommand extends GeneratorCommand
     {
         $name = $this->argument('name');
         $stub = str_replace('{{StudlyCase}}', Str::studly($name), file_get_contents($this->getStub()));
-        $stub = str_replace('{{camelCase}}', Str::lower($name), $stub);
+        $stub = str_replace('{{lowerCase}}', Str::lower($name), $stub);
+        $stub = str_replace('{{camelCase}}', Str::camel($name), $stub);
+        $stub = str_replace('{{FirstWordCase}}', Str::title(str_replace('-',' ',$name)), $stub);
 
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
         $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);

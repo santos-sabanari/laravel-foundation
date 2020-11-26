@@ -4,7 +4,7 @@
             <x-laravel-foundation::utils.link
                 icon="fas cil-arrow-circle-left"
                 class="btn btn-sm btn-secondary"
-                :href="route('{{lowerCaseNamespace}}.{{camelCase}}.index')"
+                :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.index')"
                 :text="__('Cancel')"
             />
         </div>
@@ -16,7 +16,7 @@
             </div><!--card-body-->
             @endwire
             <div class="card-footer text-right">
-                <x-form-submit>@lang('Update {{StudlyCase}}')</x-form-submit>
+                <x-form-submit>@lang('Update {{FirstWordCase}}')</x-form-submit>
             </div><!--card-footer-->
         </x-form>
 
