@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function str_replace;
 
 class CreateFormLivewireCommand extends GeneratorCommand
 {
@@ -31,7 +32,7 @@ class CreateFormLivewireCommand extends GeneratorCommand
         $lastNameAfter = Str::of($name)->afterLast('\\')->studly();
         $name = str_replace($LastNameBefore, $lastNameAfter, $name);
 
-        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name;
+        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\CreateForm';
     }
 
     protected function replaceClass($stub, $name)
@@ -49,12 +50,12 @@ class CreateFormLivewireCommand extends GeneratorCommand
         }
 
         $text = implode("\n\t", $fields);
-        $textrules = implode("\n\t\t", $rules);
-        $textattributes = implode("\n\t\t", $attributes);
+        $textrules = implode("\n\t\t\t", $rules);
+        $textattributes = implode("\n\t\t\t", $attributes);
 
-        $stub = str_replace('DummyFields', $text, $stub);
-        $stub = str_replace('DummyFieldsRules', $textrules, $stub);
         $stub = str_replace('DummyFieldsAttributes', $textattributes, $stub);
+        $stub = str_replace('DummyFieldsRules', $textrules, $stub);
+        $stub = str_replace('DummyFields', $text, $stub);
 
         return $stub;
     }
