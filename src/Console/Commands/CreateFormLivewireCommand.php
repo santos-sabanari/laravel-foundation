@@ -49,7 +49,7 @@ class CreateFormLivewireCommand extends GeneratorCommand
         $rules = [];
         $attributes = [];
         foreach ($this->argument('fields') as $field) {
-            $fields[] = "public $field;";
+            $fields[] = "public $$field;";
             $rules[] = "'$field' => 'required',";
             $attributes[] = "'$field' => '$field',";
         }
