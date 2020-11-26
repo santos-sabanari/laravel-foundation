@@ -194,12 +194,6 @@ class MasterCommand extends GeneratorCommand
         $this->call('laravel-foundation:view', [
             'name' => $this->name,
             'fields' => $this->fields,
-            '--type' => 'update',
-        ]);
-
-        $this->call('laravel-foundation:view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
             '--type' => 'action',
         ]);
     }

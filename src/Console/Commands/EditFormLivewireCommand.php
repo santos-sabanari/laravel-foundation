@@ -50,8 +50,8 @@ class EditFormLivewireCommand extends GeneratorCommand
         $attributes = [];
         foreach ($this->argument('fields') as $field) {
             $fields[] = "public $$field;";
-            $rules[] = "'$field' => 'required',";
-            $attributes[] = "'$field' => '$field',";
+            $rules[] = "'$camel.$field' => 'required',";
+            $attributes[] = "'$camel.$field' => '$field',";
         }
 
         $text = implode("\n\t", $fields);
