@@ -27,7 +27,6 @@ class MasterCommand extends GeneratorCommand
         $this->getInput();
 
         // process
-        $this->createRequest();
         $this->createService();
         $this->createModel();
         $this->createEvent();
@@ -36,9 +35,11 @@ class MasterCommand extends GeneratorCommand
         $this->createMigration();
         $this->createFactory();
         $this->createSeeder();
+        $this->createLivewire();
         $this->createDatatable();
         $this->createController();
         $this->createView();
+        $this->createLivewireView();
         $this->createRoute();
 
         $this->info('All done!');
@@ -70,30 +71,6 @@ class MasterCommand extends GeneratorCommand
             $this->fields [] = trim($field);
         }
     }
-
-    private function createRequest()
-    {
-        $this->call('laravel-foundation:store-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        $this->call('laravel-foundation:update-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        $this->call('laravel-foundation:edit-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        $this->call('laravel-foundation:delete-request', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-    }
-
     private function createService()
     {
         $this->call('laravel-foundation:service', [
@@ -217,13 +194,35 @@ class MasterCommand extends GeneratorCommand
         $this->call('laravel-foundation:view', [
             'name' => $this->name,
             'fields' => $this->fields,
-            '--type' => 'update',
+            '--type' => 'action',
         ]);
+    }
 
-        $this->call('laravel-foundation:view', [
+    private function createLivewire()
+    {
+        $this->call('laravel-foundation:create-form-livewire', [
             'name' => $this->name,
             'fields' => $this->fields,
-            '--type' => 'action',
+        ]);
+
+        $this->call('laravel-foundation:edit-form-livewire', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+        ]);
+    }
+
+    private function createLivewireView()
+    {
+        $this->call('laravel-foundation:livewire-view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'create',
+        ]);
+
+        $this->call('laravel-foundation:livewire-view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'edit',
         ]);
     }
 

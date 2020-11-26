@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use const DIRECTORY_SEPARATOR;
 
 class DatatableCommand extends GeneratorCommand
 {
@@ -46,7 +47,6 @@ class DatatableCommand extends GeneratorCommand
         foreach ($this->argument('fields') as $field) {
             $field = Str::studly($field);
             $columns[] = "Column::make(__('$field'))->searchable()->sortable(),";
-
         }
 
         $text = implode("\n\t\t\t", $columns);
@@ -62,6 +62,8 @@ class DatatableCommand extends GeneratorCommand
 
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Http\Livewire';
+        $name = Str::studly($this->argument('name'));
+
+        return $rootNamespace . '\Http\Livewire\\' . Str::studly(config('laravel-foundation.namespace')). '\\'. $name;
     }
 }

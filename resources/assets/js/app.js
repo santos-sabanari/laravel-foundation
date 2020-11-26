@@ -1,10 +1,6 @@
 import 'alpinejs'
+import "select2/dist/js/select2.min"
 
-window.$ = window.jQuery = require('jquery');
-window.Swal = require('sweetalert2');
-
-// CoreUI
+require('./bootstrap');
 require('@coreui/coreui');
-
-// Boilerplate
 require('./plugins');

@@ -1,22 +1,3 @@
 <x-laravel-foundation::layouts.app :title="'Create {{StudlyCase}}'">
-    <x-laravel-foundation::forms.post :action="route('{{lowerCaseNamespace}}.{{camelCase}}.store')">
-        <x-laravel-foundation::utils.card>
-            <x-slot name="header">
-                <x-laravel-foundation::utils.link
-                    icon="fas cil-arrow-circle-left"
-                    class="btn btn-sm btn-secondary"
-                    :href="route('{{lowerCaseNamespace}}.{{camelCase}}.index')"
-                    :text="__('Cancel')"
-                />
-            </x-slot>
-
-            <x-slot name="body">
-                DummyFields
-            </x-slot>
-
-            <x-slot name="footer">
-                <button class="btn btn-sm btn-primary float-right" type="submit">@lang('Create {{StudlyCase}}')</button>
-            </x-slot>
-        </x-laravel-foundation::utils.card>
-    </x-laravel-foundation::forms.post>
+    <livewire:{{lowerCaseNamespace}}.{{camelCase}}.create-form />
 </x-laravel-foundation::layouts.app>

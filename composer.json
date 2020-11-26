@@ -17,11 +17,15 @@
     ],
     "require": {
         "php": "^7.4",
+        "arcanedev/log-viewer": "8.0",
         "illuminate/support": "^8.0",
         "livewire/livewire": "^2.3",
         "tabuna/breadcrumbs": "^2.2",
         "torann/geoip": "^3.0",
-        "santos-sabanari/laravel-datatables": "^1.0"
+        "laravel/fortify": "^1.7",
+        "santos-sabanari/laravel-datatables": "dev-develop",
+        "spatie/laravel-activitylog": "^3.16",
+        "spatie/laravel-permission": "^3.17"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",

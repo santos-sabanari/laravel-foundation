@@ -9,90 +9,49 @@ A minimalist admin panel using coreui.
 
 ## Installation
 
-First, you have to install laravel fortify
-
-```bash
-composer require laravel/fortify
-
-php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"
-``` 
-
-Install laravel permission by spatie
-```bash
-composer require spatie/laravel-permission
-php artisan vendor:publish --provider="Spatie\Permission\PermissionServiceProvider"
-```
-
-Install laravel datatable package
-```bash
-composer require santos-sabanari/laravel-datatables
-```
-
 Install the package via composer:
 
 ```bash
 composer require santos-sabanari/laravel-foundation
-```
-
-Publish package files
-
-```bash
 php artisan laravel-foundation:install
 ```
 
-Add this code to boot function in FortifyServiceProvider
+Change to this code array in config/fortify.php
 
 ``` php
-Fortify::createUsersUsing(CreateNewUser::class);
-Fortify::updateUserProfileInformationUsing(UpdateUserProfileInformation::class);
-Fortify::updateUserPasswordsUsing(UpdateUserPassword::class);
-Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
+'username' => 'username',
+``` 
 
-Fortify::loginView(function () {
-    return view('laravel-foundation::auth.login');
-});
-
-Fortify::authenticateUsing(function (LoginRequest $request) {
-    $user = User::where('email', $request->username)->first();
-    if (! $user) {
-        $user = User::where('username', $request->username)->first();
-    }
-
-    if ($user &&
-        Hash::check($request->password, $user->password)) {
-        event(new UserLoggedIn($user));
-
-        return $user;
-    }
-});
-```
-
-Add this code to "Package Service Providers" in config/app.php
+Add this code to in Http/Kernel.php
 
 ``` php
-SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider::class,
-SantosSabanari\LaravelDatatables\LaravelDatatablesServiceProvider::class,
-App\Providers\FortifyServiceProvider::class,
-```
-
-Add this code to $middlewareGroups in Http/Kernel.php
-
-``` php
+// $middlewareGroups
 'admin' => [
     'auth',
     'is_admin',
 ],
-```
 
-Add this code to $routeMiddleware in Http/Kernel.php
- 
-``` php
+// $routeMiddleware
 'is_admin' => \SantosSabanari\LaravelFoundation\Http\Middleware\AdminCheck::class,
 'is_super_admin' => \SantosSabanari\LaravelFoundation\Http\Middleware\SuperAdminCheck::class,
 'is_user' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserCheck::class,
 'type' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserTypeCheck::class,
 'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+```
+
+Add this code to App/Provider/EventServiceProvider
+
+``` php
+// load class
+use SantosSabanari\LaravelFoundation\Listeners\RoleEventListener;
+use SantosSabanari\LaravelFoundation\Listeners\UserEventListener;
+
+// below $listen
+protected $subscribe = [
+    RoleEventListener::class,
+    UserEventListener::class,
+];
 ```
 
 Finaly, migrate the database
@@ -107,6 +66,13 @@ To create master, use this command
 ```bash
 php artisan laravel-foundation:master master field1 field2 field3
 ```
+
+## Require Package
+The require packages below has automatically installed when installing laravel foundation.
+1. [Laravel Fortify](https://github.com/laravel/fortify)
+2. [Log Viewer](https://github.com/ARCANEDEV/LogViewer/blob/master/_docs/1.Installation-and-Setup.md) by Arcanedev
+3. [Laravel Activitylog](https://spatie.be/docs/laravel-activitylog) by Spatie
+4. [Laravel Permission](https://spatie.be/docs/laravel-permission) by Spatie
 
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

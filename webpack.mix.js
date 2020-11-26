@@ -7,16 +7,7 @@ mix.setResourceRoot('../');
 mix.sass('resources/assets/sass/app.scss', 'public/css/app.css');
 
 /* JS */
-mix.js('resources/assets/js/app.js', 'public/js/app.js')
-    .extract([
-        'alpinejs',
-        'jquery',
-        'bootstrap',
-        'popper.js',
-        'axios',
-        'sweetalert2',
-        'lodash'
-    ]);
+mix.js('resources/assets/js/app.js', 'public/js/app.js');
 
 mix.sourceMaps();
 

@@ -2,24 +2,11 @@
 
 namespace DummyNamespace;
 
-use App\Http\Requests\{{StudlyNamespace}}\Delete{{StudlyCase}}Request;
-use App\Http\Requests\{{StudlyNamespace}}\Edit{{StudlyCase}}Request;
-use App\Http\Requests\{{StudlyNamespace}}\Store{{StudlyCase}}Request;
-use App\Http\Requests\{{StudlyNamespace}}\Update{{StudlyCase}}Request;
-use App\Models\{{StudlyCase}};
-use App\Services\{{StudlyCase}}Service;
 use App\Http\Controllers\Controller;
-
+use App\Models\{{StudlyCase}};
 
 class {{StudlyCase}}Controller extends Controller
 {
-    protected ${{camelCase}}Service;
-
-    public function __construct({{StudlyCase}}Service ${{camelCase}}Service)
-    {
-        $this->{{camelCase}}Service = ${{camelCase}}Service;
-    }
-
     public function index()
     {
         return view('{{lowerCaseNamespace}}.{{camelCase}}.index');
@@ -30,29 +17,8 @@ class {{StudlyCase}}Controller extends Controller
         return view('{{lowerCaseNamespace}}.{{camelCase}}.create');
     }
 
-    public function store(Store{{StudlyCase}}Request $request)
-    {
-        $this->{{camelCase}}Service->store($request->validated());
-
-        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index')->withFlashSuccess(__('The {{camelCase}} was successfully created.'));
-    }
-
-    public function edit(Edit{{StudlyCase}}Request $request, {{StudlyCase}} ${{camelCase}})
+    public function edit({{StudlyCase}} ${{camelCase}})
     {
         return view('{{lowerCaseNamespace}}.{{camelCase}}.edit')->with{{StudlyCase}}(${{camelCase}});
-    }
-
-    public function update(Update{{StudlyCase}}Request $request, {{StudlyCase}} ${{camelCase}})
-    {
-        $this->{{camelCase}}Service->update(${{camelCase}}, $request->validated());
-
-        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index')->withFlashSuccess(__('The {{camelCase}} was successfully updated.'));
-    }
-
-    public function destroy(Delete{{StudlyCase}}Request $request, {{StudlyCase}} ${{camelCase}})
-    {
-        $this->{{camelCase}}Service->destroy(${{camelCase}});
-
-        return redirect()->route('{{lowerCaseNamespace}}.{{camelCase}}.index')->withFlashSuccess(__('The {{camelCase}} was successfully deleted.'));
     }
 }

@@ -45,26 +45,7 @@ class ViewCommand extends GeneratorCommand
         $stub = str_replace('{{camelCase}}', $camel, $stub);
 
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
-        $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
-
-        $fieldRows = [];
-        foreach ($this->argument('fields') as $field) {
-            if ($this->option('type') == 'create') {
-                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/create.field.stub'));
-                $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
-                $fieldRows[] = $fieldRow;
-            } elseif ($this->option('type') == 'edit') {
-                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/edit.field.stub'));
-                $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
-                $fieldRow = str_replace('{{camelCase}}', $camel, $fieldRow);
-
-                $fieldRows[] = $fieldRow;
-            }
-        }
-
-        $text = implode("\n\t\t\t\t\t", $fieldRows);
-
-        return str_replace('DummyFields', $text, $stub);
+        return str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
     }
 
     protected function getStub()

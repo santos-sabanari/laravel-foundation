@@ -30,4 +30,4 @@
 
 <p class="invalid-feedback">
     <strong>TES</strong>
-</p>SZDs
+</p>
