@@ -42,8 +42,8 @@ class EditFormLivewireCommand extends GeneratorCommand
         $camel = Str::camel($this->argument('name'));
         $stub = str_replace('{{camelCase}}', $camel, $stub);
 
-        $camel = Str::lower($this->argument('name'));
-        $stub = str_replace('{{lowerCase}}', $camel, $stub);
+        $lower = Str::lower($this->argument('name'));
+        $stub = str_replace('{{lowerCase}}', $lower, $stub);
 
         $firstword = Str::title(str_replace('-',' ',$this->argument('name')));
         $stub = str_replace('{{FirstWordCase}}', $firstword, $stub);
