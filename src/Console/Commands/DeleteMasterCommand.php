@@ -5,9 +5,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use function app_path;
-use function resource_path;
-use function str_replace;
 
 class DeleteMasterCommand extends GeneratorCommand
 {
