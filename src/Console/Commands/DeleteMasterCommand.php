@@ -25,7 +25,7 @@ class DeleteMasterCommand extends GeneratorCommand
         $this->info('Remove Master ' . $firstword);
 
         (new Filesystem())->delete(app_path("Services/$studly"."Service.php"));
-        (new Filesystem())->delete(app_path("Models/$studly"));
+        (new Filesystem())->delete(app_path("Models/$studly.php"));
         (new Filesystem())->delete(app_path("Events/$studly"."Created.php"));
         (new Filesystem())->delete(app_path("Events/$studly"."Deleted.php"));
         (new Filesystem())->delete(app_path("Events/$studly"."Updated.php"));
