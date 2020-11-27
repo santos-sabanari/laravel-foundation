@@ -44,6 +44,11 @@ class DeleteMasterCommand extends GeneratorCommand
         $this->comment('3. Seeder');
         $this->comment('4. Web Route');
 
-        $this->info('Remove Master ' . $this->argument('name') . ' done!');
+        $this->info('Remove Master ' . $name . ' done!');
+    }
+
+    protected function getStub()
+    {
+        return '';
     }
 }
