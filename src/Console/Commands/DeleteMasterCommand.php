@@ -5,6 +5,8 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
+use function app_path;
+use function database_path;
 
 class DeleteMasterCommand extends GeneratorCommand
 {
@@ -33,6 +35,8 @@ class DeleteMasterCommand extends GeneratorCommand
         (new Filesystem())->delete(app_path("Traits/$studly"."Method.php"));
         (new Filesystem())->delete(app_path("Traits/$studly"."Scope.php"));
         (new Filesystem())->delete(app_path("Listeners/$studly"."EventListener.php"));
+        (new Filesystem())->delete(database_path("factories/$studly"."Factory.php"));
+        (new Filesystem())->delete(database_path("seeders/$studly"."Seeder.php"));
         (new Filesystem())->deleteDirectory(app_path("Http/Livewire/Backend/$studly"));
         (new Filesystem())->delete(app_path("Http/Controllers/Backend/$studly"."Controller.php"));
         (new Filesystem())->deleteDirectory(resource_path("views/backend/$name"));
@@ -40,9 +44,7 @@ class DeleteMasterCommand extends GeneratorCommand
 
         $this->comment('Please remove manually:');
         $this->comment('1. Migration');
-        $this->comment('2. Factories');
-        $this->comment('3. Seeder');
-        $this->comment('4. Web Route');
+        $this->comment('2. Web Route');
 
         $this->info('Remove Master ' . $name . ' done!');
     }
