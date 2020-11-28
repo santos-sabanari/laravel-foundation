@@ -5,7 +5,6 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Str;
-use function str_replace;
 
 class ViewCommand extends GeneratorCommand
 {
@@ -25,7 +24,7 @@ class ViewCommand extends GeneratorCommand
         $lowerType = Str::lower($this->option('type'));
 
         $path = $this->laravel->resourcePath() . DIRECTORY_SEPARATOR . 'views/' . $lowerNamespace . '/' . str_replace('\\', '/', $name) . "/$lowerType" . '.blade.php';
-        if($lowerType == 'action'){
+        if ($lowerType == 'action') {
             $path = $this->laravel->resourcePath() . DIRECTORY_SEPARATOR . 'views/' . $lowerNamespace . '/' . str_replace('\\', '/', $name) . "/includes/$lowerType" . '.blade.php';
         }
 
@@ -48,11 +47,29 @@ class ViewCommand extends GeneratorCommand
         $camel = Str::camel($this->argument('name'));
         $stub = str_replace('{{camelCase}}', $camel, $stub);
 
-        $firstword = Str::title(str_replace('-',' ',$this->argument('name')));
+        $firstword = Str::title(str_replace('-', ' ', $this->argument('name')));
         $stub = str_replace('{{FirstWordCase}}', $firstword, $stub);
 
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
-        return str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
+        $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
+
+
+        if ($this->option('type') == 'show') {
+            $fieldRows = [];
+            foreach ($this->argument('fields') as $field) {
+                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/show.field.stub'));
+                $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
+                $fieldRow = str_replace('{{camelCase}}', $camel, $fieldRow);
+
+                $fieldRows[] = $fieldRow;
+            }
+
+            $text = implode("\n\t\t\t", $fieldRows);
+
+            $stub = str_replace('DummyFields', $text, $stub);
+        }
+
+        return $stub;
     }
 
     protected function getStub()
@@ -62,6 +79,8 @@ class ViewCommand extends GeneratorCommand
         } elseif ($this->option('type') == 'create') {
             return __DIR__ . '/stubs/view/create.stub';
         } elseif ($this->option('type') == 'edit') {
+            return __DIR__ . '/stubs/view/edit.stub';
+        } elseif ($this->option('type') == 'show') {
             return __DIR__ . '/stubs/view/edit.stub';
         } elseif ($this->option('type') == 'action') {
             return __DIR__ . '/stubs/view/includes/actions.stub';

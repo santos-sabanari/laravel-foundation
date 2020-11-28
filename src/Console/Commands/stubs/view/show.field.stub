@@ -1,0 +1,4 @@
+<tr>
+                    <th>@lang('DummyField')</th>
+                    <td>{{ ${{camelCase}}->LowerCaseField }}</td>
+                </tr>

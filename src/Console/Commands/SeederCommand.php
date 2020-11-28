@@ -43,22 +43,17 @@ class SeederCommand extends GeneratorCommand
 
     protected function replaceClass($stub, $name)
     {
-        $studly = Str::studly($this->argument('name'));
-        $stub = str_replace('{{StudlyCase}}', $studly, $stub);
+        $name = $this->argument('name');
 
-        $camel = Str::camel($this->argument('name'));
-        $stub = str_replace('{{camelCase}}', $camel, $stub);
-        $stub = str_replace('DummySeederNamespace', 'Database\Factories', $stub);
+        $stub = str_replace('{{StudlyCase}}', Str::studly($name), $stub);
+        $stub = str_replace('{{lowerCase}}', Str::lower($name), $stub);
+        $stub = str_replace('{{camelCase}}', Str::camel($name), $stub);
+        $stub = str_replace('{{FirstWordCase}}', Str::title(str_replace('-',' ',$name)), $stub);
 
-        $fields = [];
-        foreach ($this->argument('fields') as $field) {
-            $fields [] = "'$field'" . ' => $this->faker->name,';
-        }
+        $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
+        $stub = str_replace('{{lowerCaseNamespace}}', $lowerNamespace, $stub);
 
-        $text = implode("\n\t\t\t", $fields);
-
-        return str_replace('DummyDefinitions', $text, $stub);
-
+        return $stub;
     }
 
     protected function getStub()

@@ -15,5 +15,49 @@ class {{StudlyCase}}Seeder extends Seeder
     public function run()
     {
         {{StudlyCase}}::factory(100)->create();
+
+        ${{camelCase}} = Permission::create([
+                'type' => User::TYPE_ADMIN,
+                'name' => '{{lowerCaseNamespace}}.{{lowerCase}}',
+                'description' => 'All {{FirstWordCase}} Permissions',
+                'sort' => 1,
+            ]);
+
+        ${{camelCase}}->children()->saveMany([
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => '{{lowerCaseNamespace}}.{{lowerCase}}.list',
+                'description' => 'View {{FirstWordCase}}',
+                'sort' => 2,
+            ]),
+
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => '{{lowerCaseNamespace}}.{{lowerCase}}.create',
+                'description' => 'Create {{FirstWordCase}}',
+                'sort' => 3,
+            ]),
+
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => '{{lowerCaseNamespace}}.{{lowerCase}}.show',
+                'description' => 'Show {{FirstWordCase}}',
+                'sort' => 4,
+            ]),
+
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => '{{lowerCaseNamespace}}.{{lowerCase}}.edit',
+                'description' => 'Edit {{FirstWordCase}}',
+                'sort' => 5,
+            ]),
+
+            new Permission([
+                'type' => User::TYPE_ADMIN,
+                'name' => '{{lowerCaseNamespace}}.{{lowerCase}}.delete',
+                'description' => 'Delete {{FirstWordCase}}',
+                'sort' => 6,
+            ]),
+        ]);
     }
 }

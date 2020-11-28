@@ -42,6 +42,10 @@ class MasterCommand extends GeneratorCommand
         $this->createLivewireView();
         $this->createRoute();
 
+        $this->comment('Please do:');
+        $this->comment('1. set web.php in routes');
+        $this->comment('2. php artisan migrate');
+
         $this->info('All done!');
     }
 
@@ -189,6 +193,12 @@ class MasterCommand extends GeneratorCommand
             'name' => $this->name,
             'fields' => $this->fields,
             '--type' => 'edit',
+        ]);
+
+        $this->call('laravel-foundation:view', [
+            'name' => $this->name,
+            'fields' => $this->fields,
+            '--type' => 'show',
         ]);
 
         $this->call('laravel-foundation:view', [

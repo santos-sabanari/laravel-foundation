@@ -17,6 +17,11 @@ class {{StudlyCase}}Controller extends Controller
         return view('{{lowerCaseNamespace}}.{{lowerCase}}.create');
     }
 
+    public function show({{StudlyCase}} ${{camelCase}})
+    {
+        return view('{{lowerCaseNamespace}}.{{lowerCase}}.show')->with{{StudlyCase}}(${{camelCase}});
+    }
+
     public function edit({{StudlyCase}} ${{camelCase}})
     {
         return view('{{lowerCaseNamespace}}.{{lowerCase}}.edit')->with{{StudlyCase}}(${{camelCase}});

@@ -1,0 +1,18 @@
+<x-laravel-foundation::layouts.app :title="'Show {{FirstWordCase}}'">
+    <x-laravel-foundation::utils.card>
+        <x-slot name="header">
+            <x-laravel-foundation::utils.link
+                icon="fas cil-arrow-circle-left"
+                class="btn btn-sm btn-secondary"
+                :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.index')"
+                :text="__('Back')"
+            />
+        </x-slot>
+
+        <x-slot name="body">
+            <table class="table table-bordered table-hover">
+                DummyFields
+            </table>
+        </x-slot>
+    </x-laravel-foundation::utils.card>
+</x-laravel-foundation::layouts.app>

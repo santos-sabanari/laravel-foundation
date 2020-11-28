@@ -23,14 +23,14 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
     {
         return [
             /*
-                        Column::make(__('Provinsi'), 'provinsi_label')
-                                        ->customAttribute()
-                                        ->html()
-                                        ->searchable(function ($builder, $term) {
-                                            return $builder->orWhereHas('provinsi', function ($query) use ($term) {
-                                                return $query->where('nama', 'like', '%' . $term . '%');
-                                            });
-                                        }),
+            Column::make(__('Provinsi'), 'provinsi_label')
+                            ->customAttribute()
+                            ->html()
+                            ->searchable(function ($builder, $term) {
+                                return $builder->orWhereHas('provinsi', function ($query) use ($term) {
+                                    return $query->where('nama', 'like', '%' . $term . '%');
+                                });
+                            }),
                         */
             DummyColumns
             Column::make(__('Actions'))
