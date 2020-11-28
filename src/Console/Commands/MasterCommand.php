@@ -43,7 +43,7 @@ class MasterCommand extends GeneratorCommand
         $this->createRoute();
 
         $this->comment('Please do:');
-        $this->comment('1. set web.php in routes');
+        $this->comment('1. set web.php in routes (do not forget to change show & edit field)');
         $this->comment('2. php artisan migrate');
         $this->comment('3. sidebar menu');
 
