@@ -15,6 +15,6 @@ class {{StudlyCase}} extends Model
         {{StudlyCase}}Method;
 
     protected $fillable = [
-            DummyFillable
-        ];
+        DummyFillable
+    ];
 }
