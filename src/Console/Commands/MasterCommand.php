@@ -45,6 +45,7 @@ class MasterCommand extends GeneratorCommand
         $this->comment('Please do:');
         $this->comment('1. set web.php in routes');
         $this->comment('2. php artisan migrate');
+        $this->comment('3. sidebar menu');
 
         $this->info('All done!');
     }
