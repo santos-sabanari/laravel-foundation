@@ -1,5 +1,5 @@
 @if (auth()->user()->hasAllAccess() || auth()->user()->can('{{lowerCaseNamespace}}.{{lowerCase}}') || auth()->user()->can('{{lowerCaseNamespace}}.{{lowerCase}}.show'))
-    <x-laravel-foundation::utils.edit-button :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.edit', $model)" />
+    <x-laravel-foundation::utils.view-button :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.show', $model)" />
 @endif
 
 @if (auth()->user()->hasAllAccess() || auth()->user()->can('{{lowerCaseNamespace}}.{{lowerCase}}') || auth()->user()->can('{{lowerCaseNamespace}}.{{lowerCase}}.edit'))

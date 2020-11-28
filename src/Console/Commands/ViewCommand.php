@@ -81,7 +81,7 @@ class ViewCommand extends GeneratorCommand
         } elseif ($this->option('type') == 'edit') {
             return __DIR__ . '/stubs/view/edit.stub';
         } elseif ($this->option('type') == 'show') {
-            return __DIR__ . '/stubs/view/edit.stub';
+            return __DIR__ . '/stubs/view/show.stub';
         } elseif ($this->option('type') == 'action') {
             return __DIR__ . '/stubs/view/includes/actions.stub';
         }
