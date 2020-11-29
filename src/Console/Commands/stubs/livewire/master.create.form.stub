@@ -27,7 +27,12 @@ class CreateForm extends Component
     {
         $validated = $this->validate();
 
-        ${{camelCase}}Service->store($validated);
+        try{
+            ${{camelCase}}Service->store($validated);
+        } catch (Exception $e) {
+            $this->addError('flash_danger', $e->getMessage());
+            return;
+        }
 
         session()->flash('flash_success', 'The {{FirstWordCase}} was successfully created.');
 
