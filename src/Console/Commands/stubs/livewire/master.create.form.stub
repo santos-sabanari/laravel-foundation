@@ -27,10 +27,11 @@ class CreateForm extends Component
     {
         $validated = $this->validate();
 
-        try{
+        try {
             ${{camelCase}}Service->store($validated);
         } catch (Exception $e) {
             $this->addError('flash_danger', $e->getMessage());
+
             return;
         }
 
