@@ -42,7 +42,7 @@ class LivewireViewCommand extends GeneratorCommand
         $camel = Str::camel($this->argument('name'));
         $stub = str_replace('{{camelCase}}', $camel, $stub);
 
-        $firstword = Str::title(str_replace('-',' ',$this->argument('name')));
+        $firstword = Str::title(str_replace('-', ' ', $this->argument('name')));
         $stub = str_replace('{{FirstWordCase}}', $firstword, $stub);
 
         $lower = Str::lower($this->argument('name'));
@@ -54,11 +54,11 @@ class LivewireViewCommand extends GeneratorCommand
         $fieldRows = [];
         foreach ($this->argument('fields') as $field) {
             if ($this->option('type') == 'create') {
-                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/livewire/create.field.stub'));
+                $fieldRow = str_replace('DummyField', Str::title(str_replace('_', ' ', $field)), file_get_contents(__DIR__ . '/stubs/view/livewire/create.field.stub'));
                 $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
                 $fieldRows[] = $fieldRow;
             } elseif ($this->option('type') == 'edit') {
-                $fieldRow = str_replace('DummyField', Str::studly($field), file_get_contents(__DIR__ . '/stubs/view/livewire/edit.field.stub'));
+                $fieldRow = str_replace('DummyField', Str::title(str_replace('_', ' ', $field)), file_get_contents(__DIR__ . '/stubs/view/livewire/edit.field.stub'));
                 $fieldRow = str_replace('LowerCaseField', Str::lower($field), $fieldRow);
                 $fieldRow = str_replace('{{camelCase}}', $camel, $fieldRow);
 

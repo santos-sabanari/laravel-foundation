@@ -23,15 +23,13 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
     {
         return [
             /*
-            Column::make(__('Provinsi'), 'provinsi_label')
-                ->customAttribute()
-                ->html()
-                ->searchable(function ($builder, $term) {
-                    return $builder->orWhereHas('provinsi', function ($query) use ($term) {
-                        return $query->where('nama', 'like', '%' . $term . '%');
-                    });
-                }),
+                Column::make(__('Provinsi'))
+                    ->searchable(function ($builder, $term) {
+                        return $builder->orWhere('provinsis.nama', 'like', '%' . $term . '%');
+                    })
+                    ->sortable(),
             */
+
             DummyColumns
             Column::make(__('Actions'))
                 ->view('backend.{{lowerCase}}.includes.action'),

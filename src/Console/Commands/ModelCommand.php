@@ -45,7 +45,7 @@ class ModelCommand extends GeneratorCommand
             $fillable []= "'$field',";
         }
 
-        $text = implode("\n\t\t\t", $fillable);
+        $text = implode("\n\t\t", $fillable);
 
         return str_replace('DummyFillable', $text, $stub);
     }
