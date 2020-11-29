@@ -1,4 +1,6 @@
 <div>
+    <x-laravel-foundation::includes.partials.livewire-messages/>
+
     <div class="card">
         <div class="card-header">
             <x-laravel-foundation::utils.link
