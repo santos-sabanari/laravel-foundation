@@ -12,6 +12,7 @@
 
     @stack('before-styles')
     <link href="{{ mix('css/app.css', 'vendor/laravel-foundation') }}" rel="stylesheet">
+    <link href="{{ mix('css/coreui.css', 'vendor/laravel-foundation') }}" rel="stylesheet">
     <livewire:styles />
     @stack('after-styles')
 </head>
@@ -22,6 +23,7 @@
 @stack('before-scripts')
 <livewire:scripts />
 <script src="{{ mix('js/app.js', 'vendor/laravel-foundation') }}"></script>
+<script src="{{ mix('js/coreui.js', 'vendor/laravel-foundation') }}"></script>
 @stack('after-scripts')
 </body>
 </html>
