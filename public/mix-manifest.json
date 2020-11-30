@@ -1,6 +1,6 @@
 {
-    "/js/app.js": "/js/app.js?id=01d62e72284cb0453796",
-    "/css/app.css": "/css/app.css?id=9a5372726b3f8c7ef605",
-    "/css/coreui.css": "/css/coreui.css?id=09a0ab327b9c4579de17",
-    "/js/coreui.js": "/js/coreui.js?id=b1d35880b54c7772c0f5"
+    "/js/app.js": "/js/app.js",
+    "/css/app.css": "/css/app.css",
+    "/css/coreui.css": "/css/coreui.css",
+    "/js/coreui.js": "/js/coreui.js"
 }
