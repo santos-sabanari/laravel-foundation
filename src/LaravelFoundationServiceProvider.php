@@ -5,6 +5,7 @@ namespace SantosSabanari\LaravelFoundation;
 include_once(__DIR__ . '/Utilities/helpers.php');
 
 use App\Models\User;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Fortify\Fortify;
@@ -40,6 +41,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\ViewCommand;
 use SantosSabanari\LaravelFoundation\Events\UserLoggedIn;
 use SantosSabanari\LaravelFoundation\Http\Livewire\RolesDatatable;
 use SantosSabanari\LaravelFoundation\Http\Livewire\UsersDatatable;
+use SantosSabanari\LaravelFoundation\View\Components\FormDate;
 
 class LaravelFoundationServiceProvider extends ServiceProvider
 {
@@ -53,6 +55,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
 
         Livewire::component('users-datatable', UsersDatatable::class);
         Livewire::component('roles-datatable', RolesDatatable::class);
+        Blade::component('form-date', FormDate::class);
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
