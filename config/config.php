@@ -72,4 +72,15 @@ return [
     |
     */
     'role_admin' => 'Administrator',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Date Format
+    |--------------------------------------------------------------------------
+    |
+    | Setting date format for use
+    |
+    */
+    'date_format' => 'd/m/Y',
+    'date_format_javascript' => 'DD/MM/YYYY',
 ];
