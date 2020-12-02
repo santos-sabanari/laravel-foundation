@@ -67,3 +67,24 @@ if (! function_exists('activeClass')) {
         return $condition ? $activeClass : $inactiveClass;
     }
 }
+
+if (! function_exists('getDateFormatDatabase')) {
+    function getDateFormatDatabase()
+    {
+        return config('laravel-foundation.date_format_database');
+    }
+}
+
+if (! function_exists('getDateFormat')) {
+    function getDateFormat()
+    {
+        return config('laravel-foundation.date_format');
+    }
+}
+
+if (! function_exists('getDateFormatJavascript')) {
+    function getDateFormatJavascript()
+    {
+        return config('laravel-foundation.date_format_javascript');
+    }
+}
