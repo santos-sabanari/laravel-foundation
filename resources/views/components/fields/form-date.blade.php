@@ -1,5 +1,5 @@
 <div class="@if($type === 'hidden') d-none @else form-group @endif">
-    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()" />
+    <x-form-label :label="$label" :for="$attributes->get('id') ?: $id()"/>
 
     <div class="input-group">
         @isset($prepend)
@@ -40,11 +40,11 @@
                 </div>
             </div>
         @endisset
+
+        {!! $help ?? null !!}
+
+        @if($hasErrorAndShow($name))
+            <x-form-errors :name="$name"/>
+        @endif
     </div>
-
-    {!! $help ?? null !!}
-
-    @if($hasErrorAndShow($name))
-        <x-form-errors :name="$name" />
-    @endif
 </div>
