@@ -5,6 +5,7 @@ namespace DummyNamespace;
 use App\Models\{{StudlyCase}};
 use App\Services\{{StudlyCase}}Service;
 use Livewire\Component;
+use Exception;
 
 class CreateForm extends Component
 {

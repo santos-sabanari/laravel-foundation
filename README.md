@@ -62,6 +62,14 @@ php artisan migrate
 
 ### Usage
 
+To publish package
+```bash
+php artisan vendor:publish --provider=SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider --tag=config
+php artisan vendor:publish --provider=SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider --tag=public
+php artisan vendor:publish --provider=SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider --tag=views
+php artisan vendor:publish --provider=SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider --tag=database
+```
+
 To create master, use this command
 ```bash
 php artisan laravel-foundation:master master field1 field2 field3
