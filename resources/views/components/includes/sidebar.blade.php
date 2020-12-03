@@ -23,6 +23,9 @@
                 :text="'Dashboard'"/>
         </li>
 
+        @include('backend.includes.sidebar')
+
+        {{-- MENU SYSTEM --}}
         @if ( auth()->user()->hasAllAccess() || (
                 auth()->user()->can('backend.system.user.list') ||
                 auth()->user()->can('backend.system.user.deactivate') ||
