@@ -1,11 +1,5 @@
-# Laravel Foundation
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/santos-sabanari/laravel-foundation.svg?style=flat-square)](https://packagist.org/packages/santos-sabanari/laravel-foundation)
-[![Build Status](https://img.shields.io/travis/santos-sabanari/laravel-foundation/master.svg?style=flat-square)](https://travis-ci.org/santos-sabanari/laravel-foundation)
-[![Quality Score](https://img.shields.io/scrutinizer/g/santos-sabanari/laravel-foundation.svg?style=flat-square)](https://scrutinizer-ci.com/g/santos-sabanari/laravel-foundation)
-[![Total Downloads](https://img.shields.io/packagist/dt/santos-sabanari/laravel-foundation.svg?style=flat-square)](https://packagist.org/packages/santos-sabanari/laravel-foundation)
-
-A minimalist admin panel using coreui.
+![](https://banners.beyondco.de/Laravel%20Foundation.png?theme=light&packageManager=composer+require&packageName=santos-sabanari%2Flaravel-foundation&pattern=texture&style=style_1&description=A+minimalist+admin+panel+using+coreui&md=1&showWatermark=0&fontSize=100px&images=code)
 
 ## Installation
 
