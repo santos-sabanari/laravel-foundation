@@ -3,10 +3,27 @@
  */
 $(function () {
     /**
+     * Toggle fullscreen
+     */
+    function toggleFullScreen() {
+        var doc = window.document;
+        var docEl = doc.documentElement;
+
+        var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+        if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+            requestFullScreen.call(docEl);
+        } else {
+            cancelFullScreen.call(doc);
+        }
+    }
+
+    /**
      * Checkbox tree for permission selecting
      */
-    $('#tree :checkbox').on('click change', function (){
-        if($(this).is(':checked')) {
+    $('#tree :checkbox').on('click change', function () {
+        if ($(this).is(':checked')) {
             $(this).siblings('ul').find('input[type="checkbox"]').attr('checked', true).attr('disabled', true);
         } else {
             $(this).siblings('ul').find('input[type="checkbox"]').removeAttr('checked').removeAttr('disabled');
@@ -14,7 +31,7 @@ $(function () {
     });
 
     $('#tree :checkbox').each(function () {
-        if($(this).is(':checked')) {
+        if ($(this).is(':checked')) {
             $(this).siblings('ul').find('input[type="checkbox"]').attr('checked', true).attr('disabled', true);
         }
     });
@@ -50,7 +67,7 @@ $(function () {
     /**
      * Add a confirmation to a delete button/form
      */
-    $('body').on('submit', 'form[name=delete-item]', function(e) {
+    $('body').on('submit', 'form[name=delete-item]', function (e) {
         e.preventDefault();
 
         Swal.fire({
@@ -109,10 +126,10 @@ $(function () {
 
     let hash = window.location.hash;
     if (hash) {
-        $('.nav-link[href="'+hash+'"]').tab('show');
+        $('.nav-link[href="' + hash + '"]').tab('show');
     }
 
     // Enable tooltips everywhere
     $('[data-toggle="tooltip"]').tooltip();
-    $.fn.select2.defaults.set( "theme", "bootstrap" );
+    $.fn.select2.defaults.set("theme", "bootstrap");
 });
