@@ -36,6 +36,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitAttributeCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitMethodCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitScopeCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\UpdateCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ViewCommand;
 use SantosSabanari\LaravelFoundation\Events\UserLoggedIn;
@@ -80,6 +81,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
             // Registering package commands.
             $this->commands([
                 InstallCommand::class,
+                UpdateCommand::class,
                 MasterCommand::class,
                 DeleteMasterCommand::class,
                 ServiceCommand::class,

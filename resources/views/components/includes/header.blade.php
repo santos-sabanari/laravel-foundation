@@ -3,7 +3,7 @@
         <i class="c-icon c-icon-lg cil-menu"></i>
     </button>
 
-    <a class="c-header-brand d-lg-none text-dark text-decoration-none text-uppercase font-weight-bold" href="route('backend.dashboard')">
+    <a class="c-header-brand d-lg-none text-dark text-decoration-none text-uppercase font-weight-bold pr-4 pr-sm-4" href="route('backend.dashboard')">
         {{config('laravel-foundation.company')}}
     </a>
 
@@ -32,6 +32,16 @@
                         Profile
                     </x-slot>
                 </x-laravel-foundation::utils.link>
+
+                {{--                <x-laravel-foundation::utils.link--}}
+                {{--                    href="#"--}}
+                {{--                    class="dropdown-item"--}}
+                {{--                    icon="mr-2 fa fa-arrows-alt"--}}
+                {{--                    onclick="toggleFullScreen();return false;">--}}
+                {{--                    <x-slot name="text">--}}
+                {{--                        Toggle Fullscreen--}}
+                {{--                    </x-slot>--}}
+                {{--                </x-laravel-foundation::utils.link>--}}
 
                 <x-laravel-foundation::utils.link
                     class="dropdown-item"
