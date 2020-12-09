@@ -78,7 +78,16 @@ class InstallCommand extends Command
             '--provider' => "ProtoneMedia\LaravelFormComponents\Support\ServiceProvider"
         ]);
 
-        // TODO : Check Backend is added or not
+        $this->call('vendor:publish', [
+            '--provider' => "Spatie\LaravelSettings\LaravelSettingsServiceProvider",
+            '--tag' => 'migrations',
+        ]);
+
+        $this->call('vendor:publish', [
+            '--provider' => "Spatie\LaravelSettings\LaravelSettingsServiceProvider",
+            '--tag' => 'settings',
+        ]);
+
         // routes
         file_put_contents(
             base_path('routes/web.php'),
