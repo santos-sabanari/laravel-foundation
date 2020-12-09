@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use SantosSabanari\LaravelFoundation\Http\Controllers\DashboardController;
+use SantosSabanari\LaravelFoundation\Http\Controllers\GeneralSettingController;
 use SantosSabanari\LaravelFoundation\Http\Controllers\RoleController;
 use SantosSabanari\LaravelFoundation\Http\Controllers\UserController;
 use SantosSabanari\LaravelFoundation\Http\Controllers\UserPasswordController;
@@ -141,6 +142,29 @@ Route::group([
                 Route::patch('/', [RoleController::class, 'update'])->name('update');
                 Route::delete('/', [RoleController::class, 'destroy'])->name('destroy');
             });
+        });
+
+        // backend.system.settings
+        Route::group([
+            'prefix' => 'settings/general',
+            'as' => 'settings.general.',
+        ], function () {
+            Route::get('/', [GeneralSettingController::class, 'show'])
+                ->name('show')
+                ->breadcrumbs(function (Trail $trail) {
+                    $trail->parent('backend.dashboard')
+                        ->push(__('General Settings'), route('backend.system.settings.general.show'));
+                });
+
+            Route::get('edit', [GeneralSettingController::class, 'edit'])
+                ->name('edit')
+                ->breadcrumbs(function (Trail $trail) {
+                    $trail->parent('backend.system.settings.general.show')
+                        ->push(__('Edit General Settings'));
+                });
+
+            Route::patch('edit', [GeneralSettingController::class, 'update'])
+                ->name('update');
         });
     });
 });
