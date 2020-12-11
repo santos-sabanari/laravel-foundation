@@ -33,6 +33,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\RouteCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\SeederCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\TableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitAttributeCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitMethodCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitScopeCommand;
@@ -83,6 +84,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 InstallCommand::class,
                 UpdateCommand::class,
                 MasterCommand::class,
+                TableCommand::class,
                 DeleteMasterCommand::class,
                 ServiceCommand::class,
                 ModelCommand::class,
