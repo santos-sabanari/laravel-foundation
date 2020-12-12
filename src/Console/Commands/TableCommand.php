@@ -37,6 +37,7 @@ class TableCommand extends GeneratorCommand
 
         $this->comment('Please do:');
         $this->comment('1. php artisan migrate');
+        $this->comment('2. add event listener to subscribe method in EventServiceProvider(app/Providers)');
 
         $this->info('All done!');
     }
