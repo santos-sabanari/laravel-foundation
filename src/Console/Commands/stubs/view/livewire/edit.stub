@@ -11,15 +11,16 @@
             />
         </div>
 
-        @wire
-        @csrf
-        <div class="card-body">
-            DummyFields
-        </div><!--card-body-->
-        @endwire
-        <div class="card-footer text-right">
-            <button wire:click="submit" class="btn btn-primary">@lang('Update {{FirstWordCase}}')</button>
-        </div><!--card-footer-->
+        <x-form wire:submit.prevent="submit">
+            @wire
+            <div class="card-body">
+                DummyFields
+            </div><!--card-body-->
+            @endwire
+            <div class="card-footer text-right">
+                <x-form-submit>@lang('Update {{FirstWordCase}}')</x-form-submit>
+            </div><!--card-footer-->
+        </x-form>
 
     </div><!--card-->
 </div>
