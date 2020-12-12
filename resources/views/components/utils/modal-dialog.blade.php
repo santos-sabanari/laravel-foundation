@@ -21,7 +21,7 @@
 @push('after-scripts')
     <script>
         window.addEventListener('closeModal', event => {
-            $('#tambah').trigger('click');
+            $('#{{$id}}').trigger('click');
         })
     </script>
 
