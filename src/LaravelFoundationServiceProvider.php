@@ -17,6 +17,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DatatableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteMasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\DeleteTableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EventCreatedCommand;
@@ -86,6 +87,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 MasterCommand::class,
                 TableCommand::class,
                 DeleteMasterCommand::class,
+                DeleteTableCommand::class,
                 ServiceCommand::class,
                 ModelCommand::class,
                 EventCreatedCommand::class,
