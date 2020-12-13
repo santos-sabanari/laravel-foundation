@@ -73,6 +73,11 @@ To create master, use this command
 php artisan laravel-foundation:master master field1 field2 field3
 ```
 
+To create table (without controller, livewire, and view), use this command
+```bash
+php artisan laravel-foundation:table country field1 field2 field3
+```
+
 ## Require Package
 The require packages below has automatically installed when installing laravel foundation.
 1. [Laravel Fortify](https://github.com/laravel/fortify)
