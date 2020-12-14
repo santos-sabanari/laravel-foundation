@@ -68,14 +68,16 @@ To update published assets
 php artisan laravel-foundation:update
 ```
 
-To create master, use this command
+To create & delete master, use this command
 ```bash
 php artisan laravel-foundation:master master field1 field2 field3
+php artisan laravel-foundation:delete-master master
 ```
 
-To create table (without controller, livewire, and view), use this command
+To create & delete table (without controller, livewire, and view), use this command
 ```bash
 php artisan laravel-foundation:table country field1 field2 field3
+php artisan laravel-foundation:delete-table country
 ```
 
 ## Require Package
