@@ -16,7 +16,7 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
 
     public function query(): Builder
     {
-        return {{StudlyCase}}::query();
+        return {{StudlyCase}}::query()->orderByDesc('id');
     }
 
     public function columns(): array
