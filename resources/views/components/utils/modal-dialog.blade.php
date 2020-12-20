@@ -1,6 +1,7 @@
 @props(['title' => 'Modal title', 'label' => 'Tambah', 'type' => 'primary', 'size' => '', 'id' => md5(\Carbon\Carbon::now() . Str::random(40)), 'scripts' => false])
 
-<button class="btn btn-{{$type}}" type="button" data-toggle="modal" data-target="#{{$id}}">{{ $label }}</button>
+<button class="btn btn-{{$type}}" type="button" data-toggle="modal"
+        data-target="#{{$id}}" {{ $attributes }}>{{ $label }}</button>
 
 <div class="modal fade" id="{{$id}}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-{{$type}} {{$size==''?'':"modal-$size"}}" role="document">
