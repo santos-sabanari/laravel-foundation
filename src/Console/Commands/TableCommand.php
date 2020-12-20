@@ -5,23 +5,22 @@ namespace SantosSabanari\LaravelFoundation\Console\Commands;
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
 
-class MasterCommand extends GeneratorCommand
+class TableCommand extends GeneratorCommand
 {
-    protected $signature = 'laravel-foundation:master
-                            {name : The name of the master}
+    protected $signature = 'laravel-foundation:table
+                            {name : The name of the table}
                             {fields* : The name of the fields}';
 
-    protected $description = 'Create a master';
+    protected $description = 'Create a table';
 
-    protected $type = 'Master';
+    protected $type = 'Table';
 
     protected $name = "";
     protected $fields = [];
 
-
     public function handle()
     {
-        $this->info('Create Master');
+        $this->info('Create Table');
 
         $this->processValidation();
         $this->getInput();
@@ -35,18 +34,10 @@ class MasterCommand extends GeneratorCommand
         $this->createMigration();
         $this->createFactory();
         $this->createSeeder();
-        $this->createLivewire();
-        $this->createDatatable();
-        $this->createController();
-        $this->createView();
-        $this->createLivewireView();
-        $this->createRoute();
 
         $this->comment('Please do:');
-        $this->comment('1. set web.php in routes (do not forget to change show & edit field)');
-        $this->comment('2. php artisan migrate');
-        $this->comment('3. sidebar menu');
-        $this->comment('4. add event listener to subscribe method in EventServiceProvider(app/Providers)');
+        $this->comment('1. php artisan migrate');
+        $this->comment('2. add event listener to subscribe method in EventServiceProvider(app/Providers)');
 
         $this->info('All done!');
     }
@@ -156,91 +147,6 @@ class MasterCommand extends GeneratorCommand
     private function createSeeder()
     {
         $this->call('laravel-foundation:seeder', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-    }
-
-    private function createDatatable()
-    {
-        $this->call('laravel-foundation:datatable', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-    }
-
-    private function createController()
-    {
-        $this->call('laravel-foundation:controller', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-    }
-
-    private function createView()
-    {
-        $this->call('laravel-foundation:view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-            '--type' => 'create',
-        ]);
-
-        $this->call('laravel-foundation:view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-            '--type' => 'index',
-        ]);
-
-        $this->call('laravel-foundation:view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-            '--type' => 'edit',
-        ]);
-
-        $this->call('laravel-foundation:view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-            '--type' => 'show',
-        ]);
-
-        $this->call('laravel-foundation:view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-            '--type' => 'action',
-        ]);
-    }
-
-    private function createLivewire()
-    {
-        $this->call('laravel-foundation:create-form-livewire', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-
-        $this->call('laravel-foundation:edit-form-livewire', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-        ]);
-    }
-
-    private function createLivewireView()
-    {
-        $this->call('laravel-foundation:livewire-view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-            '--type' => 'create',
-        ]);
-
-        $this->call('laravel-foundation:livewire-view', [
-            'name' => $this->name,
-            'fields' => $this->fields,
-            '--type' => 'edit',
-        ]);
-    }
-
-    private function createRoute()
-    {
-        $this->call('laravel-foundation:route', [
             'name' => $this->name,
             'fields' => $this->fields,
         ]);

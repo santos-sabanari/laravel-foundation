@@ -17,6 +17,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DatatableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteMasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\DeleteTableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EventCreatedCommand;
@@ -33,9 +34,11 @@ use SantosSabanari\LaravelFoundation\Console\Commands\RouteCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\SeederCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\TableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitAttributeCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitMethodCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TraitScopeCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\UpdateCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\UpdateRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ViewCommand;
 use SantosSabanari\LaravelFoundation\Events\UserLoggedIn;
@@ -80,8 +83,11 @@ class LaravelFoundationServiceProvider extends ServiceProvider
             // Registering package commands.
             $this->commands([
                 InstallCommand::class,
+                UpdateCommand::class,
                 MasterCommand::class,
+                TableCommand::class,
                 DeleteMasterCommand::class,
+                DeleteTableCommand::class,
                 ServiceCommand::class,
                 ModelCommand::class,
                 EventCreatedCommand::class,

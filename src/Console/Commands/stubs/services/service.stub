@@ -65,16 +65,24 @@ class {{StudlyCase}}Service extends BaseService
 
     public function destroy({{StudlyCase}} ${{camelCase}}): bool
     {
-        if ($this->deleteById(${{camelCase}}->id)) {
-            event(new {{StudlyCase}}Deleted(${{camelCase}}));
+        DB::beginTransaction();
 
-            return true;
+        try {
+            $this->deleteById(${{camelCase}}->id);
+        } catch (Exception $e) {
+            DB::rollBack();
+
+            if(config('app.debug')){
+                throw new Exception($e->getMessage());
+            } else {
+                throw new Exception(__('There was a problem deleting the {{camelCase}}.'));
+            }
         }
 
-        if(config('app.debug')){
-            throw new Exception($e->getMessage());
-        } else {
-            throw new Exception(__('There was a problem deleting the {{camelCase}}.'));
-        }
+        event(new {{StudlyCase}}Deleted(${{camelCase}}));
+
+        DB::commit();
+
+        return true;
     }
 }
