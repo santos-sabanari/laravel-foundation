@@ -23,17 +23,17 @@ class {{StudlyCase}}Service extends BaseService
 
         try {
             ${{camelCase}} = $this->model::create($data);
+
+            event(new {{StudlyCase}}Created(${{camelCase}}));
         } catch (Exception $e) {
             DB::rollBack();
 
-            if(config('app.debug')){
+            if(config('app.debug') || $e->getCode() === 100){
                 throw new Exception($e->getMessage());
             } else {
                 throw new Exception(__('There was a problem creating the {{camelCase}}.'));
             }
         }
-
-        event(new {{StudlyCase}}Created(${{camelCase}}));
 
         DB::commit();
 
@@ -46,17 +46,17 @@ class {{StudlyCase}}Service extends BaseService
 
         try {
             ${{camelCase}}->update($data);
+
+            event(new {{StudlyCase}}Updated(${{camelCase}}));
         } catch (Exception $e) {
             DB::rollBack();
 
-            if(config('app.debug')){
+            if(config('app.debug') || $e->getCode() === 100){
                 throw new Exception($e->getMessage());
             } else {
                 throw new Exception(__('There was a problem updating the {{camelCase}}.'));
             }
         }
-
-        event(new {{StudlyCase}}Updated(${{camelCase}}));
 
         DB::commit();
 
@@ -69,17 +69,17 @@ class {{StudlyCase}}Service extends BaseService
 
         try {
             $this->deleteById(${{camelCase}}->id);
+
+            event(new {{StudlyCase}}Deleted(${{camelCase}}));
         } catch (Exception $e) {
             DB::rollBack();
 
-            if(config('app.debug')){
+            if(config('app.debug') || $e->getCode() === 100){
                 throw new Exception($e->getMessage());
             } else {
                 throw new Exception(__('There was a problem deleting the {{camelCase}}.'));
             }
         }
-
-        event(new {{StudlyCase}}Deleted(${{camelCase}}));
 
         DB::commit();
 
