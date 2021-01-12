@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
     {
         $this->disableForeignKeys();
 
-        // Add the master administrator, user id of 1
         User::create([
             'type' => User::TYPE_ADMIN,
             'name' => 'Santos Sabanari',

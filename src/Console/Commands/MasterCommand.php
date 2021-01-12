@@ -46,7 +46,8 @@ class MasterCommand extends GeneratorCommand
         $this->comment('1. set web.php in routes (do not forget to change show & edit field)');
         $this->comment('2. php artisan migrate');
         $this->comment('3. sidebar menu');
-        $this->comment('4. add event listener to subscribe method in EventServiceProvider(app/Providers)');
+        $this->comment('4. load seeder');
+        $this->comment('5. add event listener to subscribe method in EventServiceProvider(app/Providers)');
 
         $this->info('All done!');
     }
@@ -67,6 +68,8 @@ class MasterCommand extends GeneratorCommand
                 return false;
             }
         }
+
+        return true;
     }
 
     private function getInput()

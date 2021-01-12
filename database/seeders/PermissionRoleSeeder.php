@@ -22,17 +22,14 @@ class PermissionRoleSeeder extends Seeder
         $this->disableForeignKeys();
 
         // Create Roles
-        $administratorRole = Role::create([
+        Role::create([
             'id' => 1,
             'type' => User::TYPE_ADMIN,
             'name' => 'Administrator',
         ]);
 
-        // Non Grouped Permissions
-        //
-
-        // Grouped permissions
-        // Users category
+        // Create Permissions
+        // Users Permissions
         $users = Permission::create([
             'type' => User::TYPE_ADMIN,
             'name' => 'backend.system.user',
@@ -59,6 +56,7 @@ class PermissionRoleSeeder extends Seeder
             ]),
         ]);
 
+        // Roles Permissions
         $roles = Permission::create([
             'type' => User::TYPE_ADMIN,
             'name' => 'backend.system.role',
@@ -86,9 +84,6 @@ class PermissionRoleSeeder extends Seeder
                 'sort' => 3,
             ]),
         ]);
-
-        // Assign Permissions to other Roles
-        $administratorRole->givePermissionTo(Permission::all());
 
         $this->enableForeignKeys();
     }

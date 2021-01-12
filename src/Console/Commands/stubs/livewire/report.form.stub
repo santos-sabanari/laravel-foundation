@@ -1,0 +1,15 @@
+<?php
+
+namespace DummyNamespace;
+
+use Livewire\Component;
+use Exception;
+
+class IndexForm extends Component
+{
+
+    public function render()
+    {
+        return view('livewire.{{lowerCaseNamespace}}.report.{{lowerCase}}.index');
+    }
+}

@@ -39,6 +39,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
+        // harus terakhir, agar asign permission bisa semua
         $this->call(UserSeeder::class);
         $this->call(PermissionRoleSeeder::class);
         $this->call(UserRoleSeeder::class);

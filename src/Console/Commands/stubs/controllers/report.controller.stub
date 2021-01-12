@@ -1,0 +1,13 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Http\Controllers\Controller;
+
+class {{StudlyCase}}Controller extends Controller
+{
+    public function index()
+    {
+        return view('{{lowerCaseNamespace}}.report.{{lowerCase}}.index');
+    }
+}
