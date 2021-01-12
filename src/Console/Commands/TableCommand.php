@@ -58,6 +58,8 @@ class TableCommand extends GeneratorCommand
                 return false;
             }
         }
+
+        return true;
     }
 
     private function getInput()

@@ -1,0 +1,7 @@
+<x-laravel-foundation::layouts.app :title="'{{FirstWordCase}}'">
+    <x-laravel-foundation::utils.card>
+        <x-slot name="body">
+            <livewire:{{lowerCaseNamespace}}.report.{{lowerCase}}.index-datatable />
+        </x-slot>
+    </x-laravel-foundation::utils.card>
+</x-laravel-foundation::layouts.app>

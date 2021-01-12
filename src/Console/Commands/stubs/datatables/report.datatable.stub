@@ -1,0 +1,33 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Models\User;
+use Illuminate\Database\Eloquent\Builder;
+use SantosSabanari\LaravelDatatables\Views\Column;
+use SantosSabanari\LaravelDatatables\LaravelDatatables;
+
+class IndexDatatable extends LaravelDatatables
+{
+    public $sortField = 'id';
+
+    public function query(): Builder
+    {
+        return User::query()->orderByDesc('id');
+    }
+
+    public function columns(): array
+    {
+        return [
+            /*
+                Column::make(__('Provinsi'))
+                    ->searchable(function ($builder, $term) {
+                        return $builder->orWhere('provinsis.nama', 'like', '%' . $term . '%');
+                    })
+                    ->sortable(),
+            */
+
+            Column::make(__('ID'))->searchable()->sortable(),
+        ];
+    }
+}

@@ -16,6 +16,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DatatableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteMasterCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\DeleteReportCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteTableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditFormLivewireCommand;
@@ -30,8 +31,15 @@ use SantosSabanari\LaravelFoundation\Console\Commands\LivewireViewCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MasterCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\MigrationCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ModelCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ReportCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ReportControllerCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ReportDatatableCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ReportFormLivewireCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ReportRouteCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\ReportViewCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\RouteCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\SeederCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\SeederReportCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\ServiceCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\StoreRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\TableCommand;
@@ -107,6 +115,16 @@ class LaravelFoundationServiceProvider extends ServiceProvider
                 CreateFormLivewireCommand::class,
                 EditFormLivewireCommand::class,
                 RouteCommand::class,
+
+                // Report
+                ReportCommand::class,
+                DeleteReportCommand::class,
+                ReportControllerCommand::class,
+                ReportDatatableCommand::class,
+                ReportFormLivewireCommand::class,
+                ReportRouteCommand::class,
+                ReportViewCommand::class,
+                SeederReportCommand::class,
             ]);
         }
     }

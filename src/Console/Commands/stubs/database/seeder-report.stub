@@ -1,0 +1,27 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Permission;
+use App\Models\User;
+use App\Models\{{StudlyCase}};
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class {{StudlyCase}}Seeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        ${{camelCase}} = Permission::create([
+                'type' => User::TYPE_ADMIN,
+                'name' => '{{lowerCaseNamespace}}.{{lowerCase}}',
+                'description' => 'Report {{FirstWordCase}} Permissions',
+                'sort' => 1,
+            ]);
+    }
+}

@@ -63,21 +63,27 @@ php artisan vendor:publish --provider=SantosSabanari\LaravelFoundation\LaravelFo
 php artisan vendor:publish --provider=SantosSabanari\LaravelFoundation\LaravelFoundationServiceProvider --tag=database
 ```
 
-To update published assets
+To update published assets (delete old resources/views/vendor, public/vendor, and then copy the new one)
 ```bash
 php artisan laravel-foundation:update
 ```
 
 To create & delete master, use this command
 ```bash
-php artisan laravel-foundation:master master field1 field2 field3
-php artisan laravel-foundation:delete-master master
+php artisan laravel-foundation:master title-of-master field_1 field_2 field_3
+php artisan laravel-foundation:delete-master title-of-master
 ```
 
 To create & delete table (without controller, livewire, and view), use this command
 ```bash
-php artisan laravel-foundation:table country field1 field2 field3
-php artisan laravel-foundation:delete-table country
+php artisan laravel-foundation:table title-of-table field_1 field_2 field_3
+php artisan laravel-foundation:delete-table title-of-table
+```
+
+To create & delete report (without model, migration), use this command
+```bash
+php artisan laravel-foundation:report title-of-report
+php artisan laravel-foundation:delete-report title-of-report
 ```
 
 ## Require Package
