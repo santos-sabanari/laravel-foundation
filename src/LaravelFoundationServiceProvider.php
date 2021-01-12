@@ -16,6 +16,7 @@ use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\CreateFormLivewireCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DatatableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteMasterCommand;
+use SantosSabanari\LaravelFoundation\Console\Commands\DeleteReportCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteRequestCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\DeleteTableCommand;
 use SantosSabanari\LaravelFoundation\Console\Commands\EditFormLivewireCommand;
@@ -117,6 +118,7 @@ class LaravelFoundationServiceProvider extends ServiceProvider
 
                 // Report
                 ReportCommand::class,
+                DeleteReportCommand::class,
                 ReportControllerCommand::class,
                 ReportDatatableCommand::class,
                 ReportFormLivewireCommand::class,

@@ -15,7 +15,6 @@ class ReportCommand extends GeneratorCommand
     protected $type = 'Report';
 
     protected $name = "";
-    protected $fields = [];
 
     public function handle()
     {
