@@ -13,7 +13,7 @@ class ReportRouteCommand extends GeneratorCommand
 
     protected $description = 'Create a report route';
 
-    protected $type = 'Route';
+    protected $type = 'Report Route';
 
     public function handle()
     {

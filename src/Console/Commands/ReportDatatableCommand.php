@@ -15,7 +15,7 @@ class ReportDatatableCommand extends GeneratorCommand
 
     protected $description = 'Create a report datatable';
 
-    protected $type = 'Datatable';
+    protected $type = 'Report Datatable';
 
     protected function qualifyClass($name)
     {
@@ -32,7 +32,7 @@ class ReportDatatableCommand extends GeneratorCommand
         $lastNameAfter = Str::of($name)->afterLast('\\')->plural()->studly()->append("Datatable");
         $name = str_replace($LastNameBefore, $lastNameAfter, $name);
 
-        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\Report\\IndexDatatable\\' . $name;
+        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name;
     }
 
     protected function replaceClass($stub, $name)

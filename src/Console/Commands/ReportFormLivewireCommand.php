@@ -26,7 +26,7 @@ class ReportFormLivewireCommand extends GeneratorCommand
             return $name;
         }
 
-        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\Report\\IndexForm';
+        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\IndexForm';
     }
 
     protected function replaceClass($stub, $name)

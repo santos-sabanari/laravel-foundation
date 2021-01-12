@@ -14,7 +14,7 @@ class ReportControllerCommand extends GeneratorCommand
 
     protected $description = 'Create a report controller';
 
-    protected $type = 'Controller';
+    protected $type = 'Report Controller';
 
     protected function qualifyClass($name)
     {
@@ -31,7 +31,7 @@ class ReportControllerCommand extends GeneratorCommand
         $lastNameAfter = Str::of($name)->afterLast('\\')->studly()->append("Controller");
         $name = str_replace($LastNameBefore, $lastNameAfter, $name);
 
-        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\Report\\' . $name;
+        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name;
     }
 
     protected function replaceClass($stub, $name)

@@ -13,7 +13,7 @@ class SeederReportCommand extends GeneratorCommand
 
     protected $description = 'Create a seeder';
 
-    protected $type = 'Seeder Report';
+    protected $type = 'Report Seeder';
 
     protected function getPath($name)
     {

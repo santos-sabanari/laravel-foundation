@@ -13,15 +13,14 @@ class ReportViewCommand extends GeneratorCommand
 
     protected $description = 'Create a report view';
 
-    protected $type = 'View';
+    protected $type = 'Report View';
 
 
     protected function getPath($name)
     {
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
-        $lowerType = Str::lower($this->option('type'));
 
-        return $this->laravel->resourcePath() . DIRECTORY_SEPARATOR . 'views/' . $lowerNamespace . '/report/' . str_replace('\\', '/', $name) . "/$lowerType" . '.blade.php';
+        return $this->laravel->resourcePath() . DIRECTORY_SEPARATOR . 'views/' . $lowerNamespace . '/report/' . str_replace('\\', '/', $name) . 'index.blade.php';
     }
 
     protected function qualifyClass($name)

@@ -30,7 +30,6 @@ class ReportCommand extends GeneratorCommand
         $this->createDatatable();
         $this->createController();
         $this->createView();
-        $this->createLivewireView();
         $this->createRoute();
 
         $this->comment('Please do:');
