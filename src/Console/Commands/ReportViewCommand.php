@@ -20,7 +20,7 @@ class ReportViewCommand extends GeneratorCommand
     {
         $lowerNamespace = Str::lower(config('laravel-foundation.namespace'));
 
-        return $this->laravel->resourcePath() . DIRECTORY_SEPARATOR . 'views/' . $lowerNamespace . '/report/' . str_replace('\\', '/', $name) . 'index.blade.php';
+        return $this->laravel->resourcePath() . DIRECTORY_SEPARATOR . 'views/' . $lowerNamespace . '/report/' . str_replace('\\', '/', $name) . '/index.blade.php';
     }
 
     protected function qualifyClass($name)

@@ -6,10 +6,6 @@ Route::group([
     'as' => '{{lowerCase}}.',
 ] , function(){
     Route::get('/', [{{StudlyCase}}Controller::class, 'index'])
-        ->name('index')
-        ->breadcrumbs(function (Trail $trail) {
-            $trail->parent('{{lowerCaseNamespace}}.dashboard')
-                ->push(__('{{FirstWordCase}}'), route('{{lowerCaseNamespace}}.report.{{lowerCase}}.index'));
-        });
+        ->name('index');
 });
 */

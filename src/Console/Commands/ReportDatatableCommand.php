@@ -28,11 +28,7 @@ class ReportDatatableCommand extends GeneratorCommand
             return $name;
         }
 
-        $LastNameBefore = Str::of($name)->afterLast('\\');
-        $lastNameAfter = Str::of($name)->afterLast('\\')->plural()->studly()->append("Datatable");
-        $name = str_replace($LastNameBefore, $lastNameAfter, $name);
-
-        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name;
+        return $this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\IndexDatatable';
     }
 
     protected function replaceClass($stub, $name)
