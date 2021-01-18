@@ -54,6 +54,19 @@ Finaly, migrate the database
 php artisan migrate
 ```
 
+Don't forget to set schedule for backup server (app\Console\Kernel.php -> on 'schedule' function)
+
+```php
+$schedule->command('backup:run')->daily()->at('02:00');
+```
+
+Set cron job for running every minute
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
+
 ### Usage
 To publish package
 ```bash
