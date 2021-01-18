@@ -26,6 +26,7 @@
         "protonemedia/laravel-form-components": "^2.2",
         "santos-sabanari/laravel-datatables": "dev-develop",
         "spatie/laravel-activitylog": "^3.16",
+        "spatie/laravel-backup": "^6.0",
         "spatie/laravel-permission": "^3.17",
         "spatie/laravel-settings": "^1.0",
         "tabuna/breadcrumbs": "^2.2",
