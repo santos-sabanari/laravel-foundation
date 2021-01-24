@@ -32,6 +32,7 @@ Add this code to in Http/Kernel.php
 'type' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserTypeCheck::class,
 'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
 ```
 
 Add this code to App/Provider/EventServiceProvider

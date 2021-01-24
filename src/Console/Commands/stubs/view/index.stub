@@ -1,13 +1,15 @@
 <x-laravel-foundation::layouts.app :title="'{{FirstWordCase}}'">
     <x-laravel-foundation::utils.card>
-        <x-slot name="header">
-            <x-laravel-foundation::utils.link
-                icon="fas fa-plus-circle"
-                class="btn btn-primary"
-                :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.create')"
-                :text="__('Create {{FirstWordCase}}')"
-            />
-        </x-slot>
+        @if (auth()->user()->hasAllAccess() || auth()->user()->can('{{lowerCaseNamespace}}.{{lowerCase}}') || auth()->user()->can('{{lowerCaseNamespace}}.{{lowerCase}}.create'))
+            <x-slot name="header">
+                <x-laravel-foundation::utils.link
+                    icon="fas fa-plus-circle"
+                    class="btn btn-primary"
+                    :href="route('{{lowerCaseNamespace}}.{{lowerCase}}.create')"
+                    :text="__('Create {{FirstWordCase}}')"
+                />
+            </x-slot>
+        @endif
 
         <x-slot name="body">
             @push('after-scripts')

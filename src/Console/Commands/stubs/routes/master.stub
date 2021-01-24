@@ -7,6 +7,7 @@ Route::group([
 ] , function(){
     Route::get('/', [{{StudlyCase}}Controller::class, 'index'])
         ->name('index')
+        ->middleware('role_or_permission:Administrator|{{lowerCaseNamespace}}.{{lowerCase}}|{{lowerCaseNamespace}}.{{lowerCase}}.list')
         ->breadcrumbs(function (Trail $trail) {
             $trail->parent('{{lowerCaseNamespace}}.dashboard')
                 ->push(__('{{FirstWordCase}}'), route('{{lowerCaseNamespace}}.{{lowerCase}}.index'));
@@ -14,6 +15,7 @@ Route::group([
 
     Route::get('create', [{{StudlyCase}}Controller::class, 'create'])
         ->name('create')
+        ->middleware('role_or_permission:Administrator|{{lowerCaseNamespace}}.{{lowerCase}}|{{lowerCaseNamespace}}.{{lowerCase}}.create')
         ->breadcrumbs(function (Trail $trail) {
             $trail->parent('{{lowerCaseNamespace}}.{{lowerCase}}.index')
                 ->push(__('Create {{FirstWordCase}}'), route('{{lowerCaseNamespace}}.{{lowerCase}}.create'));
@@ -21,6 +23,7 @@ Route::group([
 
     Route::get('show/{{{camelCase}}}', [{{StudlyCase}}Controller::class, 'show'])
         ->name('show')
+        ->middleware('role_or_permission:Administrator|{{lowerCaseNamespace}}.{{lowerCase}}|{{lowerCaseNamespace}}.{{lowerCase}}.show')
         ->breadcrumbs(function (Trail $trail, ${{camelCase}}) {
             $trail->parent('{{lowerCaseNamespace}}.{{lowerCase}}.index')
                 ->push(__('Show :{{camelCase}}', ['{{camelCase}}' => ${{camelCase}}->nama]));
@@ -28,6 +31,7 @@ Route::group([
 
     Route::get('edit/{{{camelCase}}}', [{{StudlyCase}}Controller::class, 'edit'])
         ->name('edit')
+        ->middleware('role_or_permission:Administrator|{{lowerCaseNamespace}}.{{lowerCase}}|{{lowerCaseNamespace}}.{{lowerCase}}.edit')
         ->breadcrumbs(function (Trail $trail, ${{camelCase}}) {
             $trail->parent('{{lowerCaseNamespace}}.{{lowerCase}}.index')
                 ->push(__('Editing :{{camelCase}}', ['{{camelCase}}' => ${{camelCase}}->nama]));
