@@ -3,6 +3,9 @@ const mix = require('laravel-mix');
 mix.setPublicPath('public');
 mix.setResourceRoot('../');
 
+/* COPY FILES */
+mix.copyDirectory('resources/assets/fonts', 'public/fonts');
+
 /* CSS */
 mix.sass('resources/assets/sass/app.scss', 'public/css/app.css');
 mix.sass('resources/assets/sass/coreui.scss', 'public/css/coreui.css');
