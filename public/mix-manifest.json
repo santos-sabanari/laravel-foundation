@@ -1,6 +1,10 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css",
-    "/css/coreui.css": "/css/coreui.css",
-    "/js/coreui.js": "/js/coreui.js"
+    "/js/app.js": "/js/app.js?id=84753a6c9409c2c9c93f",
+    "/css/app.css": "/css/app.css?id=08074d00f046152cb3cd",
+    "/css/coreui.css": "/css/coreui.css?id=77f7e88d26b4f012b9b4",
+    "/js/app.js.map": "/js/app.js.map?id=f38922ecfed90a44c530",
+    "/css/app.css.map": "/css/app.css.map?id=e54f2d7bacde307efb4d",
+    "/css/coreui.css.map": "/css/coreui.css.map?id=74504b61951260f9327d",
+    "/js/coreui.js": "/js/coreui.js?id=dfee01c37a42be932931",
+    "/js/coreui.js.map": "/js/coreui.js.map?id=50e2936cf0422a14eef7"
 }
