@@ -49,6 +49,13 @@ protected $subscribe = [
 ];
 ```
 
+Set timezone and local for Indonesia (optional)
+``` php
+'timezone' => 'Asia/Jakarta',
+'locale' => 'id',
+'faker_locale' => 'id_ID',
+```
+
 Finaly, migrate the database
 
 ```bash
@@ -106,6 +113,7 @@ The require packages below has automatically installed when installing laravel f
 2. [Log Viewer](https://github.com/ARCANEDEV/LogViewer/blob/master/_docs/1.Installation-and-Setup.md) by Arcanedev
 3. [Laravel Activitylog](https://spatie.be/docs/laravel-activitylog) by Spatie
 4. [Laravel Permission](https://spatie.be/docs/laravel-permission) by Spatie
+5. [Laravel Backup](https://spatie.be/docs/laravel-backup) by Spatie
 
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
