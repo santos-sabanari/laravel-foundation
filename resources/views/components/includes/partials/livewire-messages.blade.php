@@ -1,3 +1,26 @@
+@isset($showFieldErrors)
+    @if($showFieldErrors === true && isset($errors) && $errors->any())
+        @php
+            $messages = [];
+        @endphp
+        @foreach($errors->keys() as $key)
+            @if(!str_starts_with($key,'flash_'))
+                @php
+                    $messages[] = $errors->get($key)[0];
+                @endphp
+            @endif
+        @endforeach
+
+        @if(count($messages) > 0)
+            <x-laravel-foundation::utils.alert type="danger" class="header-message">
+                @foreach($messages as $message)
+                    {{ $message }} <br>
+                @endforeach
+            </x-laravel-foundation::utils.alert>
+        @endif
+    @endif
+@endisset
+
 @error('flash_danger')
 <x-laravel-foundation::utils.alert type="danger" class="header-message">
     {{$message}}
@@ -21,13 +44,3 @@
     {{$message}}
 </x-laravel-foundation::utils.alert>
 @enderror
-
-@isset($showFieldErrors)
-    @if($showFieldErrors === true && isset($errors) && $errors->any())
-        <x-laravel-foundation::utils.alert type="danger" class="header-message">
-            @foreach($errors->all() as $error)
-                {{ $error }}<br/>
-            @endforeach
-        </x-laravel-foundation::utils.alert>
-    @endif
-@endisset
