@@ -12,7 +12,8 @@ class {{StudlyCase}} extends Model
 {
     use HasFactory,
         {{StudlyCase}}Attribute,
-        {{StudlyCase}}Method;
+        {{StudlyCase}}Method,
+        {{StudlyCase}}Scope;
 
     protected $fillable = [
         DummyFillable
