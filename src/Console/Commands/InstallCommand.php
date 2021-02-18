@@ -101,7 +101,7 @@ class InstallCommand extends Command
 
         $this->comment('Please do:');
         $this->comment('1. uncomment web.php');
-        $this->comment('2. set pwa (offline route & view)');
+        $this->comment('2. set pwa (config, offline route & view)');
 
         $this->info('All done!');
     }
