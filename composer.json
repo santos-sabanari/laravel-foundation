@@ -25,6 +25,7 @@
         "livewire/livewire": "^2.3",
         "protonemedia/laravel-form-components": "^2.2",
         "santos-sabanari/laravel-datatables": "dev-develop",
+        "silviolleite/laravelpwa": "^2.0",
         "spatie/laravel-activitylog": "^3.16",
         "spatie/laravel-backup": "^6.0",
         "spatie/laravel-permission": "^3.17",

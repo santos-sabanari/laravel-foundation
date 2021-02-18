@@ -12,6 +12,10 @@ use SantosSabanari\LaravelFoundation\Http\Controllers\UserPasswordController;
 use SantosSabanari\LaravelFoundation\Http\Controllers\UserSessionController;
 use Tabuna\Breadcrumbs\Trail;
 
+Route::get('/offline', function () {
+    return view('vendor/laravelpwa/offline');
+});
+
 Route::get('logout', function () {
     session()->flush();
     auth()->logout();

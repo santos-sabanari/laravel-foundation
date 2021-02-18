@@ -114,6 +114,7 @@ The require packages below has automatically installed when installing laravel f
 3. [Laravel Activitylog](https://spatie.be/docs/laravel-activitylog) by Spatie
 4. [Laravel Permission](https://spatie.be/docs/laravel-permission) by Spatie
 5. [Laravel Backup](https://spatie.be/docs/laravel-backup) by Spatie
+6. [Laravel PWA](https://github.com/silviolleite/laravel-pwa) by Silvio Leite
 
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

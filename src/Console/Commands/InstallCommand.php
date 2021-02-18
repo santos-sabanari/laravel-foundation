@@ -88,12 +88,20 @@ class InstallCommand extends Command
             '--tag' => 'settings',
         ]);
 
+        $this->call('vendor:publish', [
+            '--provider' => "LaravelPWA\Providers\LaravelPWAServiceProvider"
+        ]);
+
         // routes
         file_put_contents(
             base_path('routes/web.php'),
             file_get_contents(__DIR__ . '/stubs/routes/web.stub'),
             FILE_APPEND
         );
+
+        $this->comment('Please do:');
+        $this->comment('1. uncomment web.php');
+        $this->comment('2. set pwa (offline route & view)');
 
         $this->info('All done!');
     }
