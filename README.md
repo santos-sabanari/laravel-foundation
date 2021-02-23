@@ -32,6 +32,7 @@ Add this code to in Http/Kernel.php
 'type' => \SantosSabanari\LaravelFoundation\Http\Middleware\UserTypeCheck::class,
 'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
 'role' => \Spatie\Permission\Middlewares\RoleMiddleware::class,
+'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
 ```
 
 Add this code to App/Provider/EventServiceProvider
@@ -48,11 +49,31 @@ protected $subscribe = [
 ];
 ```
 
+Set timezone and local for Indonesia (optional)
+``` php
+'timezone' => 'Asia/Jakarta',
+'locale' => 'id',
+'faker_locale' => 'id_ID',
+```
+
 Finaly, migrate the database
 
 ```bash
 php artisan migrate
 ```
+
+Don't forget to set schedule for backup server (app\Console\Kernel.php -> on 'schedule' function)
+
+```php
+$schedule->command('backup:run')->daily()->at('02:00');
+```
+
+Set cron job for running every minute
+
+```bash
+* * * * * cd /path-to-your-project && php artisan schedule:run >> /dev/null 2>&1
+```
+
 
 ### Usage
 To publish package
@@ -92,6 +113,8 @@ The require packages below has automatically installed when installing laravel f
 2. [Log Viewer](https://github.com/ARCANEDEV/LogViewer/blob/master/_docs/1.Installation-and-Setup.md) by Arcanedev
 3. [Laravel Activitylog](https://spatie.be/docs/laravel-activitylog) by Spatie
 4. [Laravel Permission](https://spatie.be/docs/laravel-permission) by Spatie
+5. [Laravel Backup](https://spatie.be/docs/laravel-backup) by Spatie
+6. [Laravel PWA](https://github.com/silviolleite/laravel-pwa) by Silvio Leite
 
 ## Contributing
 Please see [CONTRIBUTING](CONTRIBUTING.md) for details.

@@ -20,14 +20,6 @@ class {{StudlyCase}}sDatatable extends LaravelDatatables
     public function columns(): array
     {
         return [
-            /*
-                Column::make(__('Provinsi'))
-                    ->searchable(function ($builder, $term) {
-                        return $builder->orWhere('provinsis.nama', 'like', '%' . $term . '%');
-                    })
-                    ->sortable(),
-            */
-
             DummyColumns
             Column::make(__('Actions'))
                 ->view('backend.{{lowerCase}}.includes.action'),
