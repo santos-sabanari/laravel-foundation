@@ -3,7 +3,6 @@
 namespace SantosSabanari\LaravelFoundation\Services;
 
 use App\Models\Role;
-use App\Exceptions\GeneralException;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use SantosSabanari\LaravelFoundation\Services\BaseService;
@@ -30,7 +29,7 @@ class RoleService extends BaseService
      * @param  array  $data
      *
      * @return Role
-     * @throws GeneralException
+     * @throws Exception
      * @throws \Throwable
      */
     public function store(array $data = []): Role
@@ -43,7 +42,7 @@ class RoleService extends BaseService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem creating the role.'));
+            throw new Exception(__('There was a problem creating the role.'));
         }
 
         event(new RoleCreated($role));
@@ -58,7 +57,7 @@ class RoleService extends BaseService
      * @param  array  $data
      *
      * @return Role
-     * @throws GeneralException
+     * @throws Exception
      * @throws \Throwable
      */
     public function update(Role $role, array $data = []): Role
@@ -71,7 +70,7 @@ class RoleService extends BaseService
         } catch (Exception $e) {
             DB::rollBack();
 
-            throw new GeneralException(__('There was a problem updating the role.'));
+            throw new Exception(__('There was a problem updating the role.'));
         }
 
         event(new RoleUpdated($role));
@@ -85,12 +84,12 @@ class RoleService extends BaseService
      * @param  Role  $role
      *
      * @return bool
-     * @throws GeneralException
+     * @throws Exception
      */
     public function destroy(Role $role): bool
     {
         if ($role->users()->count()) {
-            throw new GeneralException(__('You can not delete a role with associated users.'));
+            throw new Exception(__('You can not delete a role with associated users.'));
         }
 
         if ($this->deleteById($role->id)) {
@@ -99,6 +98,6 @@ class RoleService extends BaseService
             return true;
         }
 
-        throw new GeneralException(__('There was a problem deleting the role.'));
+        throw new Exception(__('There was a problem deleting the role.'));
     }
 }
