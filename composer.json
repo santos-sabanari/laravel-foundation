@@ -17,7 +17,7 @@
     ],
     "require": {
         "php": "^7.4|^8.0",
-        "arcanedev/log-viewer": "8.0",
+        "arcanedev/log-viewer": "8.1.0",
         "barryvdh/laravel-debugbar": "^3.5",
         "illuminate/support": "^8.0",
         "haruncpi/laravel-id-generator": "^1.0",
