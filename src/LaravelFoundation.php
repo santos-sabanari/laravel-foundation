@@ -4,5 +4,5 @@ namespace SantosSabanari\LaravelFoundation;
 
 class LaravelFoundation
 {
-    // Build your next great package.
+    // Build your next great package. s
 }
